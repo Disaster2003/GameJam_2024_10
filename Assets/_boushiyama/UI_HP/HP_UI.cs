@@ -29,7 +29,7 @@ public class HP_UI : MonoBehaviour
             Heal(1);
         }
     }
-
+    //ƒ_ƒ[ƒW
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
@@ -38,7 +38,7 @@ public class HP_UI : MonoBehaviour
 
         UpdateHealthUI();
     }
-
+    //‰ñ•œ
     public void Heal(int amount)
     {
         currentHealth += amount;
