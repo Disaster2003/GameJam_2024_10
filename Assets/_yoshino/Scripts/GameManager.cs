@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    private static GameManager instance; // クラスのインスタンス
+
     private enum STATE_SCENE
     {
         TITLE,
@@ -15,28 +16,50 @@ public class GameManager : MonoBehaviour
     }
     private STATE_SCENE state_scene;
 
-    [SerializeField] int timeFinish;
+    [SerializeField] int timeClear; // クリアタイム
 
     // Start is called before the first frame update
     void Start()
     {
-        state_scene = STATE_SCENE.TITLE;
+        if(instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+
+        state_scene = STATE_SCENE.TITLE; // シーンの初期化
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Timer.GetInstance().GetTimer() >= timeFinish)
+        switch (state_scene)
         {
-            // ゲームクリア画面へ
-            SetNextScene(STATE_SCENE.GAMECLEAR);
+            case STATE_SCENE.TITLE:
+                break;
+            case STATE_SCENE.PLAY:
+                if(Timer.GetInstance().GetTimer() >= timeClear)
+                {
+                    // ゲームクリア画面へ
+                    SetNextScene(STATE_SCENE.GAMECLEAR);
+                }
+                //if()
+                //{
+                //    // ゲームオーバー画面へ
+                //    SetNextScene(STATE_SCENE.GAMEOVER);
+                //}
+                break;
+            case STATE_SCENE.GAMECLEAR:
+                break;
+            case STATE_SCENE.GAMEOVER:
+                break;
         }
-        //if()
-        //{
-        //    // ゲームオーバー画面へ
-        //    SetNextScene(STATE_SCENE.GAMEOVER);
-        //}
     }
+
+    /// <summary>
+    /// インスタンスを取得する
+    /// </summary>
+    public static GameManager GetInstance() { return instance; }
 
     /// <summary>
     /// 次のシーンに設定する
