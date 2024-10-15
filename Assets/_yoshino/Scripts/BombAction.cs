@@ -7,6 +7,7 @@ public class BombAction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // deltaTime‚ðOFF
         Time.timeScale = 0;
     }
 
@@ -18,6 +19,7 @@ public class BombAction : MonoBehaviour
 
     private void OnDestroy()
     {
+        // deltaTime‚ðON
         Time.timeScale = 1;
     }
 }

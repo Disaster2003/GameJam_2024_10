@@ -24,6 +24,8 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameObject.Find("imgFade").GetComponent<Image>().fillAmount > 0) return;
+
         // タイマーの更新
         timer += Time.deltaTime;
         GetComponent<Text>().text = timer.ToString("F1") + "s";
