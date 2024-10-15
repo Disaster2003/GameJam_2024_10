@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemymove3 : MonoBehaviour
+public class Enemymove2 : MonoBehaviour
 {
     public Vector2 titen;
     public float MoveSpeed;
