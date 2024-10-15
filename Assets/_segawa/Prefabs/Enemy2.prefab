@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8149817976650578467}
   - component: {fileID: 2813530111106666008}
-  - component: {fileID: 841277669951790102}
+  - component: {fileID: 271887038624967707}
   m_Layer: 0
   m_Name: Enemy2
   m_TagString: Untagged
@@ -87,7 +87,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &841277669951790102
+--- !u!114 &271887038624967707
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,8 +96,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5839913727938742746}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b74c1f80d93fbc74582de7168aa75acd, type: 3}
+  m_Script: {fileID: 11500000, guid: e83510f1aee0fba4d9959d1edcf7cdfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titen: {x: 2, y: 2}
-  MoveSpeed: 1
+  titen: {x: 5, y: 1}
+  MoveLeftSpeed: 1
+  MoveUpSpeed: 2
