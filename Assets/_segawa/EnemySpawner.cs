@@ -12,7 +12,6 @@ public class EnemySpawner : MonoBehaviour
     private int number;             //ランダムに選ばれた敵のインデックス
     private int spawnwait;          //待機時間の処理   
     private int spawncount;         //敵のスポーン数を数える
-    private GameObject GameObj;
 
     // Start is called before the first frame update
     void Start()
@@ -35,8 +34,7 @@ public class EnemySpawner : MonoBehaviour
     private void EnemySpawn()
     {
         number = Random.Range(0, _enemy.Length);
-        GameObj = Instantiate(_enemy[number]);
-        GameObj.transform.position = transform.position;
+        Instantiate(_enemy[number],transform.position,transform.rotation);
         spawncount++;
     }
 
