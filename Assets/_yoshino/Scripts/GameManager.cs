@@ -9,10 +9,11 @@ public class GameManager : MonoBehaviour
 
     private enum STATE_SCENE
     {
-        TITLE,
-        PLAY,
-        GAMECLEAR,
-        GAMEOVER,
+        TITLE, // タイトル画面
+        PLAY,  // プレイ画面
+        CLEAR, // クリア画面
+        OVER,  // ゲームオーバー画面
+        NONE,  // 未選択
     }
     private STATE_SCENE state_scene;
 
@@ -42,17 +43,17 @@ public class GameManager : MonoBehaviour
                 if(Timer.GetInstance().GetTimer() >= timeClear)
                 {
                     // ゲームクリア画面へ
-                    SetNextScene(STATE_SCENE.GAMECLEAR);
+                    SetNextScene(STATE_SCENE.CLEAR);
                 }
                 //if()
                 //{
                 //    // ゲームオーバー画面へ
-                //    SetNextScene(STATE_SCENE.GAMEOVER);
+                //    SetNextScene(STATE_SCENE.OVER);
                 //}
                 break;
-            case STATE_SCENE.GAMECLEAR:
+            case STATE_SCENE.CLEAR:
                 break;
-            case STATE_SCENE.GAMEOVER:
+            case STATE_SCENE.OVER:
                 break;
         }
     }
@@ -66,8 +67,15 @@ public class GameManager : MonoBehaviour
     /// 次のシーンに設定する
     /// </summary>
     /// <param name="_state_scene"></param>
-    private void SetNextScene(STATE_SCENE _state_scene)
+    private void SetNextScene(STATE_SCENE _state_scene = STATE_SCENE.NONE)
     {
+        // nullチェック
+        if(_state_scene == STATE_SCENE.NONE)
+        {
+            Debug.LogError("次のシーンが未設定です");
+            return;
+        }
+
         state_scene = _state_scene;
         SceneManager.LoadSceneAsync((int)state_scene);
     }
