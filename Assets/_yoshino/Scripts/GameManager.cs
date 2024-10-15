@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// 次のシーンに設定する
     /// </summary>
-    /// <param name="_state_scene"></param>
+    /// <param name="_state_scene">設定するシーン</param>
     private void SetNextScene(STATE_SCENE _state_scene = STATE_SCENE.NONE)
     {
         state_scene = _state_scene;
