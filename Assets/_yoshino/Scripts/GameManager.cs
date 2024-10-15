@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] Image imgFade; // フェードイン/アウト用画像
     private bool isFadeOut; // フェードアウトするかどうか
 
+    private bool isPausing; // ポーズ中かどうか
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +44,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        SetPause();
+
         switch (state_scene)
         {
             case STATE_SCENE.TITLE:
@@ -110,6 +114,34 @@ public class GameManager : MonoBehaviour
         {
             // フェードイン
             imgFade.fillAmount += -Time.deltaTime;
+        }
+    }
+
+    /// <summary>
+    /// ポーズの状態を取得する
+    /// </summary>
+    public bool GetIsPausing() {  return isPausing; }
+
+    /// <summary>
+    /// ポーズ処理
+    /// </summary>
+    private void SetPause()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            // ポーズ画面の切り替え
+            isPausing ^= true;
+        }
+        if (isPausing)
+        {
+            // deltaTimeをOFF
+            Time.timeScale = 0;
+            return;
+        }
+        else if (FindFirstObjectByType<BombAction>() == null)
+        {
+            // deltaTimeをON
+            Time.timeScale = 1;
         }
     }
 }

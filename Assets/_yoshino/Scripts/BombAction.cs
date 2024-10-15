@@ -13,13 +13,10 @@ public class BombAction : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // ポーズ中
+        if(GameManager.GetInstance().GetIsPausing()) return;
+
         // ここで処理を行う。
         // 更新処理はTime.fixedDeltaTimeを用いる。
-    }
-
-    private void OnDestroy()
-    {
-        // deltaTimeをON
-        Time.timeScale = 1;
     }
 }
