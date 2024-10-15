@@ -145,7 +145,7 @@ Transform:
   m_GameObject: {fileID: 78818563}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -166,7 +166,8 @@ MonoBehaviour:
   _enemy:
   - {fileID: 1607434928988736850, guid: 4367e3b75213dae43a00f74baf00cb03, type: 3}
   - {fileID: 5839913727938742746, guid: b1b5e9e2da863f744aaf160788690323, type: 3}
-  wait: 1000
+  wait: 1
+  Hakai: 5
 --- !u!1 &223859977
 GameObject:
   m_ObjectHideFlags: 0
