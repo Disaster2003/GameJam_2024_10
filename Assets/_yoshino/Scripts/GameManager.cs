@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] int timeClear; // クリアタイム
 
+    [SerializeField] Image imgFade; // フェードイン/アウト用画像
+    private bool isFadeOut; // フェードアウトするかどうか
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +33,9 @@ public class GameManager : MonoBehaviour
         }
 
         state_scene = STATE_SCENE.TITLE; // シーンの初期化
+
+        imgFade.fillAmount = 1; // フェードアウト状態
+        isFadeOut = false;      // フェードインに
     }
 
     // Update is called once per frame
@@ -39,6 +46,7 @@ public class GameManager : MonoBehaviour
             case STATE_SCENE.TITLE:
                 break;
             case STATE_SCENE.PLAY:
+<<<<<<< Updated upstream
                 if(Timer.GetInstance().GetTimer() >= timeClear)
                 {
                     // ゲームクリア画面へ
@@ -49,12 +57,17 @@ public class GameManager : MonoBehaviour
                 //    // ゲームオーバー画面へ
                 //    SetNextScene(STATE_SCENE.GAMEOVER);
                 //}
+=======
+                GameSet();
+>>>>>>> Stashed changes
                 break;
             case STATE_SCENE.GAMECLEAR:
                 break;
             case STATE_SCENE.GAMEOVER:
                 break;
         }
+
+        FadeInOrOut();
     }
 
     /// <summary>
@@ -63,12 +76,57 @@ public class GameManager : MonoBehaviour
     public static GameManager GetInstance() { return instance; }
 
     /// <summary>
+    /// ゲーム終了条件での分岐処理
+    /// </summary>
+    private void GameSet()
+    {
+        if (Timer.GetInstance().GetTimer() >= timeClear)
+        {
+            // ゲームクリア画面へ
+            SetNextScene(STATE_SCENE.CLEAR);
+        }
+        //if()
+        //{
+        //    // ゲームオーバー画面へ
+        //    SetNextScene(STATE_SCENE.OVER);
+        //}
+    }
+
+    /// <summary>
     /// 次のシーンに設定する
     /// </summary>
+<<<<<<< Updated upstream
     /// <param name="_state_scene"></param>
     private void SetNextScene(STATE_SCENE _state_scene)
+=======
+    /// <param name="_state_scene">設定するシーン</param>
+    private void SetNextScene(STATE_SCENE _state_scene = STATE_SCENE.NONE)
+>>>>>>> Stashed changes
     {
         state_scene = _state_scene;
-        SceneManager.LoadSceneAsync((int)state_scene);
+        isFadeOut = true;
+    }
+
+    /// <summary>
+    /// フェードイン/アウト
+    /// </summary>
+    private void FadeInOrOut()
+    {
+        if (isFadeOut)
+        {
+            if (imgFade.fillAmount >= 1)
+            {
+                // 次のシーンへ
+                isFadeOut = false;
+                SceneManager.LoadSceneAsync((int)state_scene);
+            }
+            // フェードアウト
+            imgFade.fillAmount += Time.deltaTime;
+        }
+        else if(imgFade.fillAmount > 0)
+        {
+            // フェードイン
+            imgFade.fillAmount += -Time.deltaTime;
+        }
     }
 }
