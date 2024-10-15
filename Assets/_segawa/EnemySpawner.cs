@@ -7,12 +7,12 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField,Header("敵オブジェクト")]
     public GameObject[] _enemy;
     [SerializeField, Header("待機時間")]
-    public int wait;
+    public float wait;
     [SerializeField, Header("動く回数")]
     public int Hakai;
 
     private int number;             //ランダムに選ばれた敵のインデックス
-    private int spawnwait;          //待機時間の処理   
+    private float spawnwait;          //待機時間の処理   
     private int spawncount;         //敵のスポーン数を数える
 
     // Start is called before the first frame update
@@ -25,8 +25,8 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        spawnwait++;
-        if (spawnwait % wait == 0)
+        spawnwait += Time.deltaTime;
+        if (spawnwait >= wait)
         {
             EnemySpawn();
         }
@@ -41,6 +41,7 @@ public class EnemySpawner : MonoBehaviour
     {
         number = Random.Range(0, _enemy.Length);
         Instantiate(_enemy[number],transform.position,transform.rotation);
+        spawnwait = 0;
         spawncount++;
     }
 
