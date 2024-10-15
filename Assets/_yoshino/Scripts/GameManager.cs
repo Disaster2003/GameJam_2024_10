@@ -10,10 +10,11 @@ public class GameManager : MonoBehaviour
 
     private enum STATE_SCENE
     {
-        TITLE,
-        PLAY,
-        GAMECLEAR,
-        GAMEOVER,
+        TITLE, // タイトル画面
+        PLAY,  // プレイ画面
+        CLEAR, // クリア画面
+        OVER,  // ゲームオーバー画面
+        NONE,  // 未設定
     }
     private STATE_SCENE state_scene;
 
@@ -46,24 +47,11 @@ public class GameManager : MonoBehaviour
             case STATE_SCENE.TITLE:
                 break;
             case STATE_SCENE.PLAY:
-<<<<<<< Updated upstream
-                if(Timer.GetInstance().GetTimer() >= timeClear)
-                {
-                    // ゲームクリア画面へ
-                    SetNextScene(STATE_SCENE.GAMECLEAR);
-                }
-                //if()
-                //{
-                //    // ゲームオーバー画面へ
-                //    SetNextScene(STATE_SCENE.GAMEOVER);
-                //}
-=======
                 GameSet();
->>>>>>> Stashed changes
                 break;
-            case STATE_SCENE.GAMECLEAR:
+            case STATE_SCENE.CLEAR:
                 break;
-            case STATE_SCENE.GAMEOVER:
+            case STATE_SCENE.OVER:
                 break;
         }
 
