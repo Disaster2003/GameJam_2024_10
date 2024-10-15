@@ -8,6 +8,8 @@ public class EnemySpawner : MonoBehaviour
     public GameObject[] _enemy;
     [SerializeField, Header("待機時間")]
     public int wait;
+    [SerializeField, Header("動く回数")]
+    public int Hakai;
 
     private int number;             //ランダムに選ばれた敵のインデックス
     private int spawnwait;          //待機時間の処理   
@@ -27,6 +29,10 @@ public class EnemySpawner : MonoBehaviour
         if (spawnwait % wait == 0)
         {
             EnemySpawn();
+        }
+        if (spawncount == Hakai)
+        {
+            SpawnerDestroy();
         }
     }
     
