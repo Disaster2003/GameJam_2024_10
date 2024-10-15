@@ -12,7 +12,7 @@ public class PhaseManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        indexPhase = 0; // フェーズ番号
+        indexPhase = 0; // フェーズ番号の初期化
     }
 
     // Update is called once per frame
