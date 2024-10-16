@@ -102,3 +102,4 @@ MonoBehaviour:
   titen: {x: 5, y: 2}
   MoveLeftSpeed: 1
   MoveUpSpeed: 2
+  wait: 2

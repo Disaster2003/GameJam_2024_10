@@ -102,3 +102,4 @@ MonoBehaviour:
   MoveLeftSpeed: 1
   MoveUpSpeed: 2
   Haba: 3
+  Wait: 1
