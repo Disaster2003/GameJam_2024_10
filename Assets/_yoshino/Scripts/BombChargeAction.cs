@@ -1,20 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class BombChargeAction : MonoBehaviour
 {
-    private GameObject UICounter;
-    private float speedMove; // 移動速度
-    private float timer; // タイマー
+    private GameObject UICounter; // アイテムカウンター
+    private float speedMove;      // 移動速度
+    [SerializeField] float accel; // 加速度
+    private float timer;          // タイマー
 
     // Start is called before the first frame update
     void Start()
     {
         UICounter = GameObject.Find("txtTimer");
         speedMove = 0; // 移動速度の初期化
-        timer = 1; // タイマーの初期化
+        timer = 1;     // タイマーの初期化
     }
 
     // Update is called once per frame
@@ -31,7 +31,7 @@ public class BombChargeAction : MonoBehaviour
         {
             // アイテムのカウントをしているUIに近づく
             transform.position = Vector3.MoveTowards(transform.position, UIposition, speedMove);
-            speedMove += Time.deltaTime;
+            speedMove += accel * Time.deltaTime;
         }
         else
         {

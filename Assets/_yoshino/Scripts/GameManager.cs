@@ -21,16 +21,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] int timeClear; // クリアタイム
 
     [SerializeField] Image imgFade; // フェードイン/アウト用画像
-    private bool isFadeOut; // フェードアウトするかどうか
+    private bool isFadeOut;         // フェードアウトするかどうか
 
     private bool isPausing; // ポーズ中かどうか
 
     // Start is called before the first frame update
     void Start()
     {
-        // Singleton
         if(instance == null)
         {
+            // Singleton
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
