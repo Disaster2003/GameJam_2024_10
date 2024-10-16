@@ -31,15 +31,16 @@ public class Enemymove4 : MonoBehaviour
 
         if (transform.position.y < titen.y && yoko == 1)
         {
-            transform.Translate(new Vector2(0,MoveUpSpeed * Time.deltaTime));
-            if (transform.position.y >= titen.y) Destroy(this);
+            transform.Translate(new Vector2(0,MoveLeftSpeed * Time.deltaTime));
+            if (transform.position.y >= titen.y) titen.y *= -1;
+            ;
         }
         else if (transform.position.y > titen.y && yoko == 1)
         {
-            transform.Translate(new Vector2(0,-MoveUpSpeed * Time.deltaTime));
-            if (transform.position.y <= titen.y) Destroy(this);
+            transform.Translate(new Vector2(0,-MoveLeftSpeed * Time.deltaTime));
+            if (transform.position.y <= titen.y) titen.y *= -1;
+            ;
         }
-
 
     }
 }

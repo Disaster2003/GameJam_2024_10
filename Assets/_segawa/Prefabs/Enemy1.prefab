@@ -101,3 +101,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveLeftSpeed: 1
   MoveUpSpeed: 2
+  Haba: 3

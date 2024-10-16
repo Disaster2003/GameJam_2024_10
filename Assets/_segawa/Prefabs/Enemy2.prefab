@@ -99,6 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e83510f1aee0fba4d9959d1edcf7cdfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titen: {x: 5, y: 1}
+  titen: {x: 5, y: 2}
   MoveLeftSpeed: 1
   MoveUpSpeed: 2
