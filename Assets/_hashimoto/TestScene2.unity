@@ -150,6 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  StartPosition: {x: 4.9, y: -2.56, z: 0}
 --- !u!212 &332908495
 SpriteRenderer:
   m_ObjectHideFlags: 0

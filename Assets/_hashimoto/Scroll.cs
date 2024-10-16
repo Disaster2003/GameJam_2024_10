@@ -7,6 +7,8 @@ public class Scroll : MonoBehaviour
     
     [SerializeField] private float speed;
 
+    [SerializeField] Vector3 StartPosition;
+
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +25,7 @@ public class Scroll : MonoBehaviour
         //‰ŠúˆÊ’u‚É–ß‚·
         if(transform.position.x <=-5f)
         {
-            transform.position = new Vector3(3.9207f,-2.56f, 0);
+            transform.position = StartPosition;
         }
     }
 }
