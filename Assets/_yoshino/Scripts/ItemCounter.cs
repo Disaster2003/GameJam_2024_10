@@ -23,7 +23,11 @@ public class ItemCounter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.B))
+        {
+            // ƒŠƒZƒbƒg
+            numberItem = 0;
+        }
     }
 
     /// <summary>
