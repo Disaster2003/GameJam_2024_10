@@ -9,6 +9,8 @@ public class Scroll : MonoBehaviour
 
     [SerializeField] Vector3 StartPosition;
 
+    [SerializeField] private float ResetPosition;
+
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +25,7 @@ public class Scroll : MonoBehaviour
         transform.position -= new Vector3(Time.deltaTime * speed, 0, 0);
 
         //èâä˙à íuÇ…ñﬂÇ∑
-        if(transform.position.x <=-5f)
+        if(transform.position.x <= ResetPosition)
         {
             transform.position = StartPosition;
         }
