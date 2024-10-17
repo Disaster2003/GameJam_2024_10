@@ -293,7 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b43a9f42a73037a45abe739bc0d39106, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intervalPhase: 30
+  intervalPhase: 1e0000003c000000
 --- !u!114 &1131074795
 MonoBehaviour:
   m_ObjectHideFlags: 0
