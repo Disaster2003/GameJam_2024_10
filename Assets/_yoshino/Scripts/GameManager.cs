@@ -37,8 +37,8 @@ public class GameManager : MonoBehaviour
 
         state_scene = STATE_SCENE.TITLE; // シーンの初期化
 
-        imgFade.fillAmount = 1; // フェードアウト状態
-        isFadeOut = false;      // フェードインに
+        imgFade.color = Color.black; // フェードアウト状態
+        isFadeOut = false;           // フェードインに
     }
 
     // Update is called once per frame
@@ -101,19 +101,19 @@ public class GameManager : MonoBehaviour
     {
         if (isFadeOut)
         {
-            if (imgFade.fillAmount >= 1)
+            if (imgFade.color.a >= 1)
             {
                 // 次のシーンへ
                 isFadeOut = false;
                 SceneManager.LoadSceneAsync((int)state_scene);
             }
             // フェードアウト
-            imgFade.fillAmount += Time.deltaTime;
+            imgFade.color = Color.Lerp(imgFade.color, Color.black, 0.5f * Time.deltaTime);
         }
-        else if(imgFade.fillAmount > 0)
+        else if(imgFade.color != Color.clear)
         {
             // フェードイン
-            imgFade.fillAmount += -Time.deltaTime;
+            imgFade.color = Color.Lerp(imgFade.color, Color.clear, 0.5f * Time.deltaTime);
         }
     }
 
