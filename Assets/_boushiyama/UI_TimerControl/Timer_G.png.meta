@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2eabf80c1ecc9f44e9ec31581a911662
+guid: b315780579952a340b18dc55a24d9811
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6791817249930038189
-    second: time_0
+      213: 8302802501213720931
+    second: Timer_G_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: time_0
+      name: Timer_G_0
       rect:
         serializedVersion: 2
         x: 0
@@ -114,8 +114,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dab4371edc1614e50800000000000000
-      internalID: 6791817249930038189
+      spriteID: 361911d72ea793370800000000000000
+      internalID: 8302802501213720931
       vertices: []
       indices: 
       edges: []

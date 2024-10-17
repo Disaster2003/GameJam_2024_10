@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 public class TimerControlManeger : MonoBehaviour
 {
-    public RectTransform[] uiElements; // 拡大するUI要素の配列
+    public RectTransform[] uiElements; // 拡大するUIの配列
     public float scaleDuration = 10f; // 拡大にかかる時間（10秒）
-    public float maxScale = 10f; // 最大スケール
-    public float waitBeforeHide = 2f; // 消えるまでの待機時間
+    public float maxScale = 10f;      //拡大サイズ
+    public float waitBeforeHide = 2f; // 消えるまでの時間
 
     // Start is called before the first frame update
     void Start()
@@ -21,9 +21,17 @@ public class TimerControlManeger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        for (int i = 0; i < 10; i++) // 0から9までの数字キーをチェック
+        {
+            if (Input.GetKeyDown((KeyCode)(KeyCode.Alpha0 + i)))
+            {
+                ShowAndScaleUI(i);
+                break; // 一度に一つだけ処理するためにループを抜ける
+            }
+        }
     }
     // 指定したインデックスのUI要素を表示する関数
+
     public void ShowAndScaleUI(int index)
     {
         if (index < 0 || index >= uiElements.Length)
@@ -69,10 +77,5 @@ public class TimerControlManeger : MonoBehaviour
         }
     }
 
-    //
-    public void OnbottonClick(int imageIndex)
-    {
-        ShowAndScaleUI(imageIndex);
-    }
-
+   
 }
