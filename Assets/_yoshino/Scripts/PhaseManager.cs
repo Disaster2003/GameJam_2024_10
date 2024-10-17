@@ -6,7 +6,7 @@ public class PhaseManager : MonoBehaviour
 {
     private static PhaseManager instance; // クラスのインスタンス
 
-    [SerializeField] int intervalPhase; // フェーズ間隔
+    [SerializeField] int[] intervalPhase; // フェーズ間隔
     private int indexPhase;             // フェーズ番号
 
     // Start is called before the first frame update
@@ -18,10 +18,15 @@ public class PhaseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GetComponent<Timer>().GetTimer() % intervalPhase < 0.01f)
+        // フェーズ進行
+        float timer = GetComponent<Timer>().GetTimer();
+        if (timer > 120)
         {
-            // フェーズの更新
-            indexPhase++;
+            UpdatePhase(timer, 1);
+        }
+        else
+        {
+            UpdatePhase(timer, 0);
         }
     }
 
@@ -34,4 +39,18 @@ public class PhaseManager : MonoBehaviour
     /// フェーズ番号を取得する
     /// </summary>
     public int GetIndexPhase() { return indexPhase; }
+
+    /// <summary>
+    /// フェーズを更新する
+    /// </summary>
+    /// <param name="_timer">タイマー</param>
+    /// <param name="index">指定する秒数配列のインデックス</param>
+    private void UpdatePhase(float _timer, int index)
+    {
+        if (_timer % intervalPhase[index] < 0.01f)
+        {
+            // フェーズの更新
+            indexPhase++;
+        }
+    }
 }
