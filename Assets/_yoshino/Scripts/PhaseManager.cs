@@ -51,6 +51,47 @@ public class PhaseManager : MonoBehaviour
         {
             // フェーズの更新
             indexPhase++;
+            //EnemyDelete();
+            //SpawnerChange();
+        }
+    }
+
+    /// <summary>
+    /// フェーズ進行時に敵を消去する
+    /// </summary>
+    private void EnemyDelete()
+    {
+        // "Enemy"タグを持つ全てのGameObjectを取得
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        // 取得したGameObjectを一つずつ破壊
+        foreach (GameObject enemy in enemies)
+        {
+            
+        }
+    }
+
+    /// <summary>
+    /// フェーズ進行時に使っていたスポナーをOFF、
+    /// 次に使うスポナーをON
+    /// </summary>
+    private void SpawnerChange()
+    {
+        // ゲームオブジェクトの配列を取得
+        GameObject[] allObjects = FindObjectsByType<GameObject>(FindObjectsSortMode.None);
+
+        // 配列内の各ゲームオブジェクトをループで処理
+        foreach (GameObject obj in allObjects)
+        {
+            // オブジェクトの名前が "Spawner" + indexPhase を含んでいるかチェック
+            if (obj.name.Contains("Spawner" + indexPhase))
+            {
+                obj.SetActive(true);
+            }
+            else if (obj.name.Contains("Spawner"))
+            {
+                obj.SetActive(false);
+            }
         }
     }
 }
