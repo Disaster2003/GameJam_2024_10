@@ -2,14 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using UnityEditor;
-
-
-#if UNITY_EDITOR
-[CustomEditor(typeof(Bullet))]
-#endif
-
-public class Bullet1 : Bullet   //Bullet wo keishou
+public class Bullet1 : Bullet   //Bullet Çåpè≥
 {
     // Start is called before the first frame update
     void Start()

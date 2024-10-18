@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraChacker : MonoBehaviour
 {
-    enum mode   //hakai suruka douka no mo-do
+    enum mode   //”j‰ó‚·‚é‚©‚Ç‚¤‚©‚Ìmode
     {
         None,
         Render,

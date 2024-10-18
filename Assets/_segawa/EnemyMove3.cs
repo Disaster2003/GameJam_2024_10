@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemymove3 : MonoBehaviour
+public class Enemymove3 : Enemymove
 {
-    public float MoveLeftSpeed;     //yoko idousokudo
-    public float MoveUpSpeed;       //jouge no sokudo
-    public float Haba;              //jouge haba
+    public float MoveUpSpeed;       //è„â∫ÇÃë¨ìx
+    public float Haba;              //è„â∫ïù
     // Start is called before the first frame update
     void Start()
     {
@@ -15,18 +14,20 @@ public class Enemymove3 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(new Vector2(-MoveLeftSpeed * Time.deltaTime, 0));
-
-        if (transform.position.y < Haba)    //ue ni idou
-        {
-            transform.Translate(new Vector2(0, MoveLeftSpeed * Time.deltaTime));
-            if (transform.position.y >= Haba) Haba *= -1;   //Haba wo - ka + ni kaeru
-        }   
-        else if (transform.position.y > Haba)   //sita nii idou
-        {
-            transform.Translate(new Vector2(0, -MoveLeftSpeed * Time.deltaTime));
-            if (transform.position.y <= Haba) Haba *= -1;   //Haba wo - ka + ni kaeru
-        }   
-
+        Move();
+        UpDown(1);
+        UpDown(-1);
     }   
+    //è„â∫à⁄ìÆ
+    private void UpDown(int up)
+    {
+        if (up * transform.position.y < up * Haba)
+        {
+            transform.Translate(new Vector2(0, up * MoveUpSpeed * Time.deltaTime));
+            if (up * transform.position.y >= up * Haba)
+            {
+                Haba *= -1;
+            }
+        }
+    }
 }   

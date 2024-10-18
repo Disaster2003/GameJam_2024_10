@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float Speed; //idousuru sokudo
+    public float Speed; //移動する速度
     void Start()
     {
         
@@ -17,13 +17,13 @@ public class Bullet : MonoBehaviour
         Move();
     }
 
-    //tama wo idousaseru kansuu
+    //弾を移動する
     public void Move()
     {
         transform.Translate(new Vector2(-Speed * Time.deltaTime, 0));
     }
 
-    //pireiya- ni atattara kieru kannsuu
+    //プレイヤーに当たったら消える
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Player" )
