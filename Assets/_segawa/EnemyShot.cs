@@ -9,7 +9,7 @@ public class EnemyShot : MonoBehaviour
     public float wait;                  //‘Ò‹@ŠÔ
 
 
-    private float spawnwait;          //‘Ò‹@ŠÔ‚Ìˆ—
+    protected float spawnwait;          //‘Ò‹@ŠÔ‚Ìˆ—
 
     // Start is called before the first frame update
     void Start()
