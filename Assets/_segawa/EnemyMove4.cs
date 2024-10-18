@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Enemymove4 : MonoBehaviour
 {
-    public Vector2 titen;           //tomaru basho
-    public float MoveLeftSpeed;     //yoko idou sokudo
-    public float MoveUpSpeed;       //jouge sokudo
-    public float Wait;              //matizikan
+    public Vector2 titen;           //止まる場所
+    public float MoveLeftSpeed;     //横移動の速度
+    public float MoveUpSpeed;       //上下の速度
+    public float Wait;              //待ち時間
 
-    private int yoko;               //yoko idoui kara tate idou nikaeru shori
-    private float matizikan;        // matizikan no shori
+    private int yoko;               //横移動から縦移動に変える
+    private float matizikan;        // 待ち時間の処理
     // Start is called before the first frame update
     void Start()
     {
@@ -20,41 +20,48 @@ public class Enemymove4 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.x < titen.x && yoko == 0)    //migi gawa no sitei sareta houkou he idou
-        {
-            transform.Translate(new Vector2(MoveLeftSpeed * Time.deltaTime, 0));
-            if (transform.position.x >= titen.x) yoko = 1;  //yoko idou kara tate idou ni kaeru
-        }   
-        else if (transform.position.x > titen.x && yoko == 0)   //hidari gawa no sitei sareta houkou he idou
-        {
-            transform.Translate(new Vector2(-MoveLeftSpeed * Time.deltaTime, 0));
-            if (transform.position.x <= titen.x) yoko = 1;  //yoko idou kara tate idou nikaeru
-        }   
-        if (transform.position.y < titen.y && yoko == 1&&matizikan<=0)  //ue ni idou
-        {
-            transform.Translate(new Vector2(0,MoveLeftSpeed * Time.deltaTime));
-            if (transform.position.y >= titen.y) houkou();
-            
-        }   
-        else if (transform.position.y > titen.y && yoko == 1&&matizikan<=0) //sita ni idou
-        {
-            transform.Translate(new Vector2(0,-MoveLeftSpeed * Time.deltaTime));
-            if (transform.position.y <= titen.y) houkou();
-            
-        }  
+        LeftRight(1);   //右側の指定された方向へ移動 
+        LeftRight(-1);  //左側の指定された方向へ移動
+        Updown(1); //上に移動
+        Updown(-1); //下に移動
+        wait();
+    }
 
-        //matizikan no shori
+    //titen.y に-をかける
+    //matizikan を設定する
+    private void Way()
+    {
+        titen.y *= -1;
+        matizikan =Wait;
+    }
+
+    //左右に移動する
+    private void LeftRight(int left)
+    {
+        if (left*transform.position.x < left*titen.x && yoko == 0)    
+        {
+            transform.Translate(new Vector2(left * MoveLeftSpeed * Time.deltaTime, 0));
+            if (left * transform.position.x >= left * titen.x) yoko = 1;  //横移動から縦移動に変える
+        }
+    }
+
+    //上下に移動する
+    private void Updown(int up)
+    {
+        if (up*transform.position.y < up*titen.y && yoko == 1 && matizikan <= 0)  
+        {
+            transform.Translate(new Vector2(0, up * MoveLeftSpeed * Time.deltaTime));
+            if (up * transform.position.y >= up * titen.y) Way();
+        }
+    }
+
+    //待ち時間の処理
+    private void wait()
+    {
         if (matizikan > 0)
         {
             matizikan -= Time.deltaTime;
         }
     }
 
-    //titen.y wo - ka + nikaeru
-    //matizikan wo settei suru
-    private void houkou()
-    {
-        titen.y *= -1;
-        matizikan =Wait;
-    }
 }

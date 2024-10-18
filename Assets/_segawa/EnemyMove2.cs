@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Enemymove2 : MonoBehaviour
 {
-    public Vector2 titen;   //tomaru basho
-    public float MoveSpeed;//idousokudo
+    public Vector2 titen;   //止まる場所
+    public float MoveSpeed;//移動速度
 
     private int yoko;
     // Start is called before the first frame update
@@ -17,15 +17,16 @@ public class Enemymove2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.x < titen.x&&yoko==0)    //migi gawa no sitei sareta houkou he idou
+        LeftRight(1);   //右側の指定された方向へ移動
+        LeftRight(-1);  //左側の指定された方向へ移動
+    }
+    //左右移動
+    private void LeftRight(int left)
+    {
+        if (left*transform.position.x < left*titen.x)    
         {
-            transform.Translate(new Vector2(MoveSpeed * Time.deltaTime, 0));
-            if(transform.position.x >= titen.x)yoko = 1;
-        }
-        else if (transform.position.x > titen.x && yoko == 0)   //hidari gawa no sitei sareta houkou he idou
-        {
-            transform.Translate(new Vector2(-MoveSpeed * Time.deltaTime, 0));
-            if (transform.position.x <= titen.x) yoko = 1;
+            transform.Translate(new Vector2(left * MoveSpeed * Time.deltaTime, 0));
+            if (left * transform.position.x >= left * titen.x) Destroy(this);
         }
 
     }
