@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      jam_2410__ui_close_0: 4428569459865346928
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
