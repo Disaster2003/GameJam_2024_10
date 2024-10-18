@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemymuve : MonoBehaviour
 {
-    public float MoveSpeed;
+    public float MoveSpeed; //teki no idousokudo
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +13,6 @@ public class Enemymuve : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(new Vector2(-MoveSpeed * Time.deltaTime, 0));
+        transform.Translate(new Vector2(-MoveSpeed * Time.deltaTime, 0));//teki wo idousaseru
     }
 }

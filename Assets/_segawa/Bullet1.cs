@@ -4,11 +4,12 @@ using UnityEngine;
 
 using UnityEditor;
 
+
 #if UNITY_EDITOR
 [CustomEditor(typeof(Bullet))]
 #endif
 
-public class Bullet1 : Bullet
+public class Bullet1 : Bullet   //Bullet wo keishou
 {
     // Start is called before the first frame update
     void Start()

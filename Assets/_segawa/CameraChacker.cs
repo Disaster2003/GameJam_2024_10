@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraChacker : MonoBehaviour
 {
-    enum mode
+    enum mode   //hakai suruka douka no mo-do
     {
         None,
         Render,
@@ -24,6 +24,7 @@ public class CameraChacker : MonoBehaviour
         _Dead();
     }
 
+    //MainCamera no naka ni haitteiru aida ha Render ni suru
     private void OnWillRenderObject()
     {
         if (Camera.current.name == "Main Camera")
@@ -32,6 +33,8 @@ public class CameraChacker : MonoBehaviour
         }
     }
 
+
+    //MainCamera kara detara hakaisuru
     private void _Dead()
     {
         if (_mode == mode.RenderOut)

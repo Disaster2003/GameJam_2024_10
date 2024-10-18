@@ -8,7 +8,7 @@ using UnityEditor;
 [CustomEditor(typeof(EnemyShot))]
 #endif
 
-public class EnemyShot1 : EnemyShot
+public class EnemyShot1 : EnemyShot //EnemyShot wo keishou
 {
     private float spawnwait;
     // Start is called before the first frame update
@@ -22,7 +22,7 @@ public class EnemyShot1 : EnemyShot
     void Update()
     {
         spawnwait += Time.deltaTime;
-        if (spawnwait >= wait)
+        if (spawnwait >= wait)  //taikizikan wo koetara
         {
             ShotSpawn();
         }
