@@ -10,11 +10,13 @@ public class UI_Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UpdateSurvivalTimeUI();
+        UpdateSurvivalTimeUI();     //時間更新の計算関数
     }
 
     // Update is called once per frame
-  
+
+
+    //時間をUIで表示
     private void Update()
     {
         // 生存時間を加算
@@ -23,7 +25,7 @@ public class UI_Timer : MonoBehaviour
         // 生存時間をUIに表示
         UpdateSurvivalTimeUI();
     }
-
+    //時間を更新する計算
     private void UpdateSurvivalTimeUI()
     {
         if (survivalTimeText != null)
