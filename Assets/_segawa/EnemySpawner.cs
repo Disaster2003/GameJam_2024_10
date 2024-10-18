@@ -11,9 +11,9 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField, Header("動く回数")]
     public int Hakai;
 
-    private int number;             //randamu ni erabareta tekino indekkusu
-    private float spawnwait;          //taikizikan no shori
-    private int spawncount;         //teki no supo-nnsuu wo kazoeru
+    private int number;             //ランダムに選ばれた敵のインデックス
+    private float spawnwait;          //待機時間の処理
+    private int spawncount;         //敵のスポーン数を数える
 
     // Start is called before the first frame update
     void Start()
@@ -26,17 +26,17 @@ public class EnemySpawner : MonoBehaviour
     void Update()
     {
         spawnwait += Time.deltaTime;
-        if (spawnwait >= wait)  //taikizikan wo koetara
+        if (spawnwait >= wait)  //待機時間を超えたら
         {
             EnemySpawn();
         }
-        if (spawncount == Hakai)    //Hakai de setteisita atai bunn supo-nn sasetara
+        if (spawncount == Hakai)    //Hakaiで設定した値分スポーンさせたら
         {
             SpawnerDestroy();
         }
     }
     
-    //teki wo sipo-nn saseru kansuu
+    //敵をスポーン関数
     private void EnemySpawn()
     {
         number = Random.Range(0, _enemy.Length);
@@ -45,7 +45,7 @@ public class EnemySpawner : MonoBehaviour
         spawncount++;
     }
 
-    //supona- wo hakai suru kansuu
+    //スポナーを破壊する関数
     private void SpawnerDestroy()
     {
         Destroy(this);

@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class EnemyShot : MonoBehaviour
 {
-    public GameObject Shot;             //tama no purehabu
-    public float wait;                  //taikizikan
+    public GameObject Shot;             //弾のプレビュー
+    public float wait;                  //待機時間
 
 
-    private float spawnwait;          //taikizikan no shori
+    private float spawnwait;          //待機時間の処理
 
     // Start is called before the first frame update
     void Start()
@@ -24,11 +24,11 @@ public class EnemyShot : MonoBehaviour
             ShotSpawn();
     }
 
-    //tama wo supo-nn saseru kannsuu
+    //弾をスポーンさせる関数
     public void ShotSpawn()
     {
         spawnwait += Time.deltaTime;
-        //taikizikan wo koetara teki wo supo-nn saseru
+        //待機時間を超えたら弾をスポーンさせる
         if (spawnwait >= wait)
         {
             Instantiate(Shot, transform.position, transform.rotation);

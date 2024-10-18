@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyShot1 : EnemyShot //EnemyShot wo keishou
+public class EnemyShot1 : EnemyShot //EnemyShot‚ðŒp³
 {
     private float spawnwait;
     // Start is called before the first frame update
@@ -16,7 +16,7 @@ public class EnemyShot1 : EnemyShot //EnemyShot wo keishou
     void Update()
     {
         spawnwait += Time.deltaTime;
-        if (spawnwait >= wait)  //taikizikan wo koetara
+        if (spawnwait >= wait)  //‘Ò‹@ŽžŠÔ‚ð’´‚¦‚½‚ç
         {
             ShotSpawn();
         }
