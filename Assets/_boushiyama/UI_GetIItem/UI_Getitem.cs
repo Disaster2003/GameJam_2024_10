@@ -15,7 +15,7 @@ public class UI_Getitem : MonoBehaviour
     {
         oldUI.SetActive(true);
         newUI.SetActive(false);
-        UpdateScoreText();
+        UpdateScoreText();          //スコアUIを表示
     }
 
     // Update is called once per frame
@@ -27,6 +27,9 @@ public class UI_Getitem : MonoBehaviour
             AddScore(1);
         }
     }
+
+
+    //スコアを加算、UIの切り替え
     void AddScore(int item)
     {
         score += item;
@@ -38,6 +41,8 @@ public class UI_Getitem : MonoBehaviour
             SwitchUI();
         }
     }
+
+    //スコアUIの表示
     void UpdateScoreText()
     {
         scoreText.text = "×" + score;       //スコア表示

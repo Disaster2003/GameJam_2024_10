@@ -14,7 +14,7 @@ public class TimerControlManeger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // 初期状態で全てのUIを非表示に
+        // 全てのUIを非表示に
         HideAllUI();
     }
 
@@ -36,28 +36,35 @@ public class TimerControlManeger : MonoBehaviour
     {
         if (index < 0 || index >= uiElements.Length)
         {
-            Debug.LogWarning("インデックスが無効です: " + index);
+            Debug.LogWarning("インデックスが無効です: " + index);      //指定したインデックス以外の入力でエラー
+
             return;
         }
 
-        StartCoroutine(ScaleAndHideUI(uiElements[index]));
+        StartCoroutine(ScaleAndHideUI(uiElements[index]));      //インデックスが有効な場合に拡大、削除の関数を呼び出す
     }
 
-    private IEnumerator ScaleAndHideUI(RectTransform uiElement)
+    
+    private IEnumerator ScaleAndHideUI(RectTransform uiElement) //拡大表示と非表示にしたいUIの指定
     {
         // UIを表示
         uiElement.gameObject.SetActive(true);
 
         // 拡大のための時間経過
         float elapsedTime = 0f;
-        Vector3 initialScale = uiElement.localScale;
-        Vector3 targetScale = initialScale * maxScale;
+        Vector3 initialScale = uiElement.localScale;    //元の画像サイズの取得
+        Vector3 targetScale = initialScale * maxScale;  //指定サイズ
 
         while (elapsedTime < scaleDuration)
         {
+            //拡大処理を滑らかにするための処理
             uiElement.localScale = Vector3.Lerp(initialScale, targetScale, elapsedTime / scaleDuration);
+
+            //初期の大きさから指定した大きさまで拡大するまで加算
             elapsedTime += Time.deltaTime;
-            yield return null;
+
+            //次のフレームまで待機
+            yield return null;      
         }
         uiElement.localScale = targetScale; // 最終的なスケールに設定
 
@@ -73,9 +80,11 @@ public class TimerControlManeger : MonoBehaviour
     {
         foreach (RectTransform uiElement in uiElements)
         {
-            uiElement.gameObject.SetActive(false);
+            uiElement.gameObject.SetActive(false);      //UIを非表示にする
         }
     }
 
+  
+   
    
 }
