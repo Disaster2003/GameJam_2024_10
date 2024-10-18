@@ -7,11 +7,9 @@ public class Enemymove2 : MonoBehaviour
     public Vector2 titen;   //~‚Ü‚éêŠ
     public float MoveSpeed;//ˆÚ“®‘¬“x
 
-    private int yoko;
     // Start is called before the first frame update
     void Start()
     {
-        yoko = 0;
     }
 
     // Update is called once per frame
