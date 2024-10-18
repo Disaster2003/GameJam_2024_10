@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyShot1 : EnemyShot //EnemyShot‚ğŒp³
 {
-
     // Start is called before the first frame update
     void Start()
     {
