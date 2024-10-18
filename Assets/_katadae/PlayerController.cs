@@ -59,31 +59,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //パターン1
-        //_x = 0;
-        //_y = 0;
-
-        //if (Input.GetKey("right") || Input.GetKey("d"))
-        //{
-        //    _x = _speed;
-        //}
-
-        //else if (Input.GetKey("left") || Input.GetKey("a"))
-        //{
-        //    _x = -_speed;
-        //}
-
-        //if (Input.GetKey("up") || Input.GetKey("w"))
-        //{
-        //    _y = _speed;
-        //}
-
-        //else if (Input.GetKey("down") || Input.GetKey("s"))
-        //{
-        //    _y = -_speed;
-        //}
-
-        //パターン2
 
 
         //ステートがダメージならリターン
@@ -128,13 +103,6 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    void FixedUpdate()
-    {
-        //this.transform.Translate(_vx/50, _vy/50, 0);
-
-    }
-
-
     //当たったときの処理
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -157,34 +125,6 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        //IEnumerator _hit()
-        //{
-        //    //_Count += Time.deltaTime;
-        //    _cc2d.enabled = false;
-        //    for (int i = 0; i < _loopCount; i++)
-        //    {
-
-
-        //        yield return new WaitForSeconds(_flashInterval);
-        //        _sp.enabled = false;
-        //        yield return new WaitForSeconds(_flashInterval);
-        //        _sp.enabled = true;
-        //        if (i > 20)
-        //        {
-        //            _st = 3;
-
-        //            //if (_st == 3&&_Count>=10f)
-        //            //{
-
-
-        //            //}
-        //        }
-        //    }
-
-        //    _st=1;
-        //    _cc2d.enabled = true;
-        //    _sp.color = Color.white;
-        //}
 
 
         IEnumerator _hit()
@@ -230,32 +170,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    ////エネミーヒットでダメージ
-    //    //if (collision.gameObject.tag == "Enemy")
-    //    //{
-    //    //    _currentHP = _currentHP - 1;
-    //    //    if (_isHit == true)
-    //    //    {
-    //    //        _currentHP = _currentHP - 1;
-    //    //    }
-    //    //    Debug.Log("Enemy");
-    //    //}
-
-    //    //    //回復系ヒットで回復（MAX　HP10まで）
-    //    //    if (collision.gameObject.tag == "Life")
-    //    //{
-    //    //    _currentHP = _currentHP + 1;
-
-    //    //    if (_currentHP > 10)
-    //    //    {
-    //    //        _currentHP = 10;
-
-    //    //    }
-    //    //    Debug.Log("Life");
-    //    //}
-    //}
+    
 
 
 

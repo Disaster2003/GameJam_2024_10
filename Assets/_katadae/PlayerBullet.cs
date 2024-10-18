@@ -6,8 +6,6 @@ public class PlayerBullet : MonoBehaviour
 {
     public float MoveSpeed;         // 移動値
     GameObject playerObj = null;     // プレイヤーオブジェクト
-    //const float deleteDistance = 35 * 35;   // 削除距離
-
     int frameCount = 0;             // フレームカウント
    public  int deleteFrame;    // 削除フレーム(650推奨）
 
@@ -31,11 +29,6 @@ public class PlayerBullet : MonoBehaviour
             Destroy(gameObject);
         }
 
-        //// 一定の距離が離れたら消す
-        //if (distance > deleteDistance)
-        //{
-        //    Destroy(gameObject);
-        //}
        
     }
 
