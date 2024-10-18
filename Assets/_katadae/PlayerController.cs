@@ -143,11 +143,7 @@ public class PlayerController : MonoBehaviour
                 {
                     _st = 3;
 
-                    //if (_st == 3&&_Count>=10f)
-                    //{
-
-
-                    //}
+                 
                 }
             }
 
