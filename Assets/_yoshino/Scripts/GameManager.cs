@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager instance; // クラスのインスタンス
 
-    private enum STATE_SCENE
+    public enum STATE_SCENE
     {
         TITLE, // タイトル画面
         PLAY,  // プレイ画面
@@ -88,9 +88,10 @@ public class GameManager : MonoBehaviour
     /// 次のシーンに設定する
     /// </summary>
     /// <param name="_state_scene">設定するシーン</param>
-    private void SetNextScene(STATE_SCENE _state_scene = STATE_SCENE.NONE)
+    public void SetNextScene(STATE_SCENE _state_scene = STATE_SCENE.NONE)
     {
         state_scene = _state_scene;
+        imgFade.enabled = true;
         isFadeOut = true;
     }
 
@@ -112,6 +113,11 @@ public class GameManager : MonoBehaviour
         }
         else if(imgFade.color != Color.clear)
         {
+            if (imgFade.color.a == 0)
+            {
+                // 判定の削除
+                imgFade.enabled = false;
+            }
             // フェードイン
             imgFade.color = Color.Lerp(imgFade.color, Color.clear, 0.5f * Time.deltaTime);
         }
