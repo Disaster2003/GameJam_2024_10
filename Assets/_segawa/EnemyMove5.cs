@@ -2,24 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemymove : MonoBehaviour
+public class EnemyMove5 : Enemymove
 {
-    public float MoveSpeed; //“G‚ÌˆÚ“®‘¬“x
     // Start is called before the first frame update
     void Start()
     {
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         Move();
+        DownMove();
     }
 
-    //ˆÚ“®‚·‚é
-    public void Move()
+    //‰º‚ÉˆÚ“®‚·‚é
+    private void DownMove()
     {
-        transform.Translate(new Vector2(-MoveSpeed * Time.deltaTime, 0));//“G‚ðˆÚ“®‚³‚¹‚é
-
+        transform.Translate(new Vector2(0,-(MoveSpeed/2) * Time.deltaTime));//“G‚ðˆÚ“®‚³‚¹‚é
     }
 }
