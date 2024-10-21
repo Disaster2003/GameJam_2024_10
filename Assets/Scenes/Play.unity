@@ -464,6 +464,7 @@ MonoBehaviour:
   speedMove: 5
   positionMoveLimit: {x: 8, y: 4.5, z: 0}
   bullet: {fileID: 4308677850673929545, guid: ff221b151a2646442b3afdea95de7ecf, type: 3}
+  bomb: {fileID: 0}
   hpMax: 10
   timeInvincible: 2
   timeImpossibleInputKey: 0.5
@@ -764,14 +765,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1775596266}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca70057ca7cf081408393564ccd96f20, type: 3}
+  m_Script: {fileID: 11500000, guid: b5ecbf7c680c051468b8e0653ef7e986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemy:
-  - {fileID: 1607434928988736850, guid: 4367e3b75213dae43a00f74baf00cb03, type: 3}
-  - {fileID: 5839913727938742746, guid: b1b5e9e2da863f744aaf160788690323, type: 3}
-  wait: 3
-  Hakai: 10
+  enemyArray:
+  - {fileID: 7275907274861779879, guid: e259d8a6ad1e5684dad47f4f145e5766, type: 3}
+  - {fileID: 1756864356135991260, guid: ddb1b46a1c86dd8499d2e480f5f84caa, type: 3}
+  - {fileID: 654109235532049313, guid: 8381008568a8e0946a9f9febe6ddc34f, type: 3}
+  - {fileID: 8250357103199578416, guid: 301c8e47e07b62d48b3775508e0a2252, type: 3}
+  intervalSpawnEnemy: 3
+  countSpawnMax: 10
 --- !u!1 &1922097348
 GameObject:
   m_ObjectHideFlags: 0

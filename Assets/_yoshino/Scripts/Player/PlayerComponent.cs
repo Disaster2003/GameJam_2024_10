@@ -88,7 +88,7 @@ public class PlayerComponent : MonoBehaviour
         // nullチェック
         if(positionLimit == Vector3.zero) return;
 
-        // 位置を指定された位置の範囲内へ矯正する
+        // 位置を指定された範囲内へ
         Vector3 positionRange = Vector3.zero;
         positionRange.x = Mathf.Clamp(transform.position.x, -positionLimit.x, positionLimit.x);
         positionRange.y = Mathf.Clamp(transform.position.y, -positionLimit.y, positionLimit.y);

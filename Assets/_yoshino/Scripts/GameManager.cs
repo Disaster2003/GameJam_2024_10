@@ -72,6 +72,8 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void GameSet()
     {
+        if(imgFade.color.a > 0) return;
+
         if (Timer.GetInstance().GetTimer() >= timeClear)
         {
             // ゲームクリア画面へ
@@ -102,24 +104,25 @@ public class GameManager : MonoBehaviour
     {
         if (isFadeOut)
         {
-            if (imgFade.color.a >= 1)
+            if (imgFade.color == Color.black)
             {
                 // 次のシーンへ
                 isFadeOut = false;
                 SceneManager.LoadSceneAsync((int)state_scene);
             }
             // フェードアウト
-            imgFade.color = Color.Lerp(imgFade.color, Color.black, 0.5f * Time.deltaTime);
+            imgFade.color = Color.Lerp(imgFade.color, Color.black, Time.deltaTime);
         }
         else if(imgFade.color != Color.clear)
         {
-            if (imgFade.color.a == 0)
+            if (imgFade.color.a < 0.05f)
             {
                 // 判定の削除
                 imgFade.enabled = false;
+                return;
             }
             // フェードイン
-            imgFade.color = Color.Lerp(imgFade.color, Color.clear, 0.5f * Time.deltaTime);
+            imgFade.color = Color.Lerp(imgFade.color, Color.clear, Time.deltaTime);
         }
     }
 

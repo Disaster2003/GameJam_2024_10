@@ -1,14 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.EventSystems.StandaloneInputModule;
 
 public class BulletComponent : MonoBehaviour
 {
     private enum STATE_BULLET
     {
-        PLAYER = 1,
-        ENEMY = -1,
+        PLAYER = 1, // ƒvƒŒƒCƒ„[w‰c
+        ENEMY = -1, // “Gw‰c
     }
     [SerializeField, Header("’e‚Ìw‰c")]
     private STATE_BULLET state_bullet;
@@ -37,7 +36,7 @@ public class BulletComponent : MonoBehaviour
 
         if(collision.tag == "Enemy")
         {
-            // ©g‚ğ”j‰ó‚·‚é
+            // ©g‚Ì”j‰ó
             Destroy(gameObject);
         }
     }

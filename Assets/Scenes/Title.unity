@@ -473,6 +473,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ManagerCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7281072001449756078, guid: 1a734baea8d0e2843b443891a3850dab, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -612,7 +616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a18f754c8b4d84885dc9ee031a2db1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state_scene: 0
+  state_scene: 1
 --- !u!1 &2008092960
 GameObject:
   m_ObjectHideFlags: 0
