@@ -23,7 +23,12 @@ public class Life : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void DropItem()
+    public void NormalDestory()
+    {
+
+    }
+
+    public void DropItem()
     {
         if (Random.value  < DropChance)
         {
