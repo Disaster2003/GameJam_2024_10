@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager instance; // クラスのインスタンス
+    private static GameManager instance;
 
     public enum STATE_SCENE
     {
@@ -18,24 +18,27 @@ public class GameManager : MonoBehaviour
     }
     private STATE_SCENE state_scene;
 
-    [SerializeField] int timeClear; // クリアタイム
+    [SerializeField, Header("クリアタイム")]
+    private int timeClear;
 
-    [SerializeField] Image imgFade; // フェードイン/アウト用画像
-    private bool isFadeOut;         // フェードアウトするかどうか
+    [SerializeField, Header("フェードイン/アウト用画像")]
+    private Image imgFade;
+    private bool isFadeOut; // true = フェードアウト, false = フェードイン
 
-    private bool isPausing; // ポーズ中かどうか
+    private bool isPausing; // true = ポーズ中, false = ポーズ解除
 
     // Start is called before the first frame update
     void Start()
     {
         if(instance == null)
         {
-            // Singleton
+            // インスタンスの生成
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
 
-        state_scene = STATE_SCENE.TITLE; // シーンの初期化
+        // シーンの初期化
+        state_scene = STATE_SCENE.TITLE;
 
         imgFade.color = Color.black; // フェードアウト状態
         isFadeOut = false;           // フェードインに
@@ -72,18 +75,18 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void GameSet()
     {
-        if(imgFade.color.a > 0) return;
+        if(SceneManager.GetActiveScene().buildIndex != (int)state_scene) return;
 
-        if (Timer.GetInstance().GetTimer() >= timeClear)
+        if (Timer.GetInstance().GetSurvivalTimer() >= timeClear)
         {
             // ゲームクリア画面へ
             SetNextScene(STATE_SCENE.CLEAR);
         }
-        //if()
-        //{
-        //    // ゲームオーバー画面へ
-        //    SetNextScene(STATE_SCENE.OVER);
-        //}
+        if (PlayerComponent.GetInstance().GetHp() <= 0)
+        {
+            // ゲームオーバー画面へ
+            SetNextScene(STATE_SCENE.OVER);
+        }
     }
 
     /// <summary>
@@ -92,6 +95,7 @@ public class GameManager : MonoBehaviour
     /// <param name="_state_scene">設定するシーン</param>
     public void SetNextScene(STATE_SCENE _state_scene = STATE_SCENE.NONE)
     {
+        Debug.Log(gameObject);
         state_scene = _state_scene;
         imgFade.enabled = true;
         isFadeOut = true;
