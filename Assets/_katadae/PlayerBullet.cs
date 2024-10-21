@@ -48,7 +48,7 @@ public class PlayerBullet : MonoBehaviour
         //エネミーヒットでダメージ
         if (collision.gameObject.tag == "Enemy")
         {
-
+            Destroy(collision.gameObject);
             Destroy(gameObject);
         }
     }
