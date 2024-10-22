@@ -68,7 +68,7 @@ public class PhaseManager : MonoBehaviour
         // Žæ“¾‚µ‚½GameObject‚ðˆê‚Â‚¸‚Â”j‰ó
         foreach (GameObject enemy in enemies)
         {
-            
+            GetComponent<EnemyBase>().Dead();
         }
     }
 

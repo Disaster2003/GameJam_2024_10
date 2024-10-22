@@ -24,17 +24,30 @@ public class EnemyBase : MonoBehaviour
 
             if (hp <= 0)
             {
-                // 自身の破壊
-                Destroy(gameObject);
+                Dead();
             }
         }
     }
 
-    private void OnDestroy()
+    /// <summary>
+    /// 死亡処理
+    /// </summary>
+    public void Dead()
+    {
+        ItemDrop();
+
+        // 自身の破壊
+        Destroy(gameObject);
+    }
+
+    /// <summary>
+    /// アイテムを生成する
+    /// </summary>
+    private void ItemDrop()
     {
         // 確率の探索
         probability = Random.Range(0, probability);
-        if(probability == 0)
+        if (probability == 0)
         {
             // アイテムの生成
             Instantiate(item, transform.position, Quaternion.identity);

@@ -166,9 +166,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437e56aaeac962d46a991371d1a86fec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 3
+  hp: 1
   item: {fileID: 8284826019610562523, guid: f413fad7db02fe541ad97c42df85dce2, type: 3}
-  probability: 10
+  probability: 1
 --- !u!114 &5110026584177068109
 MonoBehaviour:
   m_ObjectHideFlags: 0
