@@ -24,6 +24,8 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(timerSurvival >= GameManager.GetInstance().GetClearTime()) return;
+
         // タイマーの更新
         timerSurvival += Time.deltaTime;
         int minute = Mathf.FloorToInt(timerSurvival / 60); // 分を計算

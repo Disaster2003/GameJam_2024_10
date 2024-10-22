@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField, Header("フェードイン/アウト用画像")]
     private Image imgFade;
+    [SerializeField, Header("フェードイン/アウト用倍率")]
+    private float fadeTime;
     private bool isFadeOut; // true = フェードアウト, false = フェードイン
 
     private bool isPausing; // true = ポーズ中, false = ポーズ解除
@@ -47,13 +49,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SetPause();
-
         switch (state_scene)
         {
             case STATE_SCENE.TITLE:
                 break;
             case STATE_SCENE.PLAY:
+                SetPause();
                 GameSet();
                 break;
             case STATE_SCENE.CLEAR:
@@ -61,7 +62,10 @@ public class GameManager : MonoBehaviour
             case STATE_SCENE.OVER:
                 break;
         }
+    }
 
+    private void FixedUpdate()
+    {
         FadeInOrOut();
     }
 
@@ -102,6 +106,11 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
+    /// クリアタイムを取得する
+    /// </summary>
+    public float GetClearTime() {  return timeClear; }
+
+    /// <summary>
     /// フェードイン/アウト
     /// </summary>
     private void FadeInOrOut()
@@ -115,7 +124,7 @@ public class GameManager : MonoBehaviour
                 SceneManager.LoadSceneAsync((int)state_scene);
             }
             // フェードアウト
-            imgFade.color = Color.Lerp(imgFade.color, Color.black, Time.deltaTime);
+            imgFade.color = Color.Lerp(imgFade.color, Color.black, fadeTime * Time.fixedDeltaTime);
         }
         else if(imgFade.color != Color.clear)
         {
@@ -123,10 +132,12 @@ public class GameManager : MonoBehaviour
             {
                 // 判定の削除
                 imgFade.enabled = false;
+                Time.timeScale = 1;
                 return;
             }
             // フェードイン
-            imgFade.color = Color.Lerp(imgFade.color, Color.clear, Time.deltaTime);
+            Time.timeScale = 0;
+            imgFade.color = Color.Lerp(imgFade.color, Color.clear, fadeTime * Time.fixedDeltaTime);
         }
     }
 

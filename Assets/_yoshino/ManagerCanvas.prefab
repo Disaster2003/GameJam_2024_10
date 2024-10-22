@@ -117,6 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeClear: 6000
   imgFade: {fileID: 7281072001449756078}
+  fadeTime: 1
 --- !u!1 &5788033075659878390
 GameObject:
   m_ObjectHideFlags: 0
