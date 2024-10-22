@@ -44,4 +44,10 @@ public class Timer : MonoBehaviour
     /// タイマーを取得する
     /// </summary>
     public float GetSurvivalTimer() { return timerSurvival; }
+
+    private void OnDestroy()
+    {
+        // ローカルにタイムを保存
+        PlayerPrefs.SetFloat("Time", timerSurvival);
+    }
 }
