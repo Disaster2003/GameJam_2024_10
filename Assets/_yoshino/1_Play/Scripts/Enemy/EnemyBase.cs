@@ -12,12 +12,18 @@ public class EnemyBase : MonoBehaviour
     [SerializeField, Header("1/?でアイテムドロップ")]
     private int probability;
 
+    // Start is called before the first frame update
+    void Start()
+    {
+        GetComponent<Rigidbody2D>().freezeRotation = true; // 回転不可
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // nullチェック
         if (collision == null) return;
 
-        if(collision.CompareTag("Bullet"))
+        if (collision.CompareTag("Bullet"))
         {
             // ダメージ
             hp--;
