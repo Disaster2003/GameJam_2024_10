@@ -19,6 +19,7 @@ public class EnemyShot1 : EnemyShot //EnemyShot‚ðŒp³
         if (spawnwait >= wait)  //‘Ò‹@ŽžŠÔ‚ð’´‚¦‚½‚ç
         {
             ShotSpawn();
+            spawnwait = 0;
         }
 
     }

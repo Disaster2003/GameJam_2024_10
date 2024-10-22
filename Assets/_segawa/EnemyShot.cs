@@ -21,19 +21,20 @@ public class EnemyShot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        spawnwait += Time.deltaTime;
+        //待機時間を超えたら弾をスポーンさせる
+        if (spawnwait >= wait)
+        {
+
             ShotSpawn();
+            spawnwait = 0;
+        }
+
     }
 
     //弾をスポーンさせる関数
     public void ShotSpawn()
     {
-        spawnwait += Time.deltaTime;
-        //待機時間を超えたら弾をスポーンさせる
-        if (spawnwait >= wait)
-        {
-            Instantiate(Shot, transform.position, transform.rotation);
-            spawnwait = 0;
-
-        }
+        Instantiate(Shot, transform.position, transform.rotation);
     }
 }
