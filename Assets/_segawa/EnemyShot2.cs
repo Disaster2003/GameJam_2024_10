@@ -27,7 +27,7 @@ public class EnemyShot2 : EnemyShot
             {
                 if (rapidmati <= 0) rapidshot();
             }
-            if(rapidtama==10)rapidreset();
+            if(rapidtama==RapidShot)rapidreset();
             if(rapidmati!=0) rapidmati -= Time.deltaTime;
 
         }
