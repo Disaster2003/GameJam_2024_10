@@ -9,7 +9,7 @@ public class PlayerBullet : MonoBehaviour
     int frameCount = 0;             // フレームカウント
     public  int deleteFrame;    // 削除フレーム(650推奨）
 
-    public int _currentHP;
+ 
   
 
     // Start is called before the first frame update

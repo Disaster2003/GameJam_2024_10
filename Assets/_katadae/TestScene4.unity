@@ -416,10 +416,14 @@ MonoBehaviour:
   _xLimit2: 0
   _yLimit: 4.4
   _speed: 5
-  _flashInterval: 0.01
-  _loopCount: 60
   _st: 0
-  _Count: 3
+  _pst: 0
+  _timer: 0
+  _timer2: 0
+  _Mtimer: 0
+  _HitStop: 0
+  _target: {fileID: 1075940597}
+  _cycle: 0.2
   BulletObj: {fileID: 2674119198624501569, guid: 871a787b7d92f194491aa5ebc4748d28, type: 3}
 --- !u!212 &1075940597
 SpriteRenderer:
