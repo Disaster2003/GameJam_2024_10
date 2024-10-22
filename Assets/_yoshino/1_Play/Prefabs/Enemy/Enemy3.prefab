@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3094954115970973821}
   - component: {fileID: 8175832679301428397}
-  - component: {fileID: 1290894160868413838}
+  - component: {fileID: -3345879360800827983}
   - component: {fileID: 2242833044739888208}
   - component: {fileID: -5472918488513883585}
   - component: {fileID: 3097075134316076508}
@@ -91,8 +91,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &1290894160868413838
-CircleCollider2D:
+--- !u!61 &-3345879360800827983
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -126,7 +126,17 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!50 &2242833044739888208
 Rigidbody2D:
   serializedVersion: 4
@@ -182,7 +192,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state_enemy: 2
-  positionInitialize: {x: 0, y: 0, z: 0}
   speedMove: 1
   positionGoal: {x: 5, y: 0, z: 0}
   widthVertical: 5
