@@ -4,30 +4,31 @@ using UnityEngine;
 
 public class BombCharge : MonoBehaviour
 {
-    private GameObject UICounter; // アイテムカウンター
-    private float speedMove;      // 移動速度
-    [SerializeField] float accel; // 加速度
-    private float timer;          // タイマー
+    private GameObject UICounter;
+    private float speedMove;
+    [SerializeField, Header("加速度")]
+    private float accel;
+    [SerializeField, Header("待機時間")]
+    private float timerWait;
 
     // Start is called before the first frame update
     void Start()
     {
         UICounter = GameObject.Find("txtTimer");
         speedMove = 0; // 移動速度の初期化
-        timer = 1;     // タイマーの初期化
     }
 
     // Update is called once per frame
     void Update()
     {
-        // カメラ内でのワールド座標に変換する
+        // カメラ内でのワールド座標に変換
         Vector3 UIposition = Camera.main.ScreenToWorldPoint(UICounter.GetComponent<RectTransform>().transform.position);
         if (Vector3.Distance(transform.position, UIposition) < 1)
         {
-            // 自身を破棄する
+            // 自身の破壊
             Destroy(gameObject);
         }
-        else if(timer <= 0)
+        else if(timerWait <= 0)
         {
             // アイテムのカウントをしているUIに近づく
             transform.position = Vector3.MoveTowards(transform.position, UIposition, speedMove);
@@ -36,7 +37,7 @@ public class BombCharge : MonoBehaviour
         else
         {
             // 時間経過
-            timer += -Time.deltaTime;
+            timerWait += -Time.deltaTime;
         }
     }
 

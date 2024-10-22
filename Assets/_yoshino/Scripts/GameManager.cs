@@ -157,11 +157,10 @@ public class GameManager : MonoBehaviour
             // ポーズ画面の切り替え
             isPausing ^= true;
         }
-        if (isPausing)
+        if (isPausing　|| FindFirstObjectByType<BombAction>())
         {
             // deltaTimeをOFF
             Time.timeScale = 0;
-            return;
         }
         else if (FindFirstObjectByType<BombAction>() == null)
         {

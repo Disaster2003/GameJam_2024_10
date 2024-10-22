@@ -14,8 +14,6 @@ public class EnemyMove : MonoBehaviour
     [SerializeField, Header("敵の動き方")]
     private STATE_ENEMY state_enemy;
 
-    [SerializeField, Header("初期位置")]
-    private Vector3 positionInitialize;
     [SerializeField, Header("移動速度")]
     private float speedMove;
 
@@ -30,9 +28,6 @@ public class EnemyMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // 初期配置
-        transform.position = positionInitialize;
-
         // 到着状態の初期化
         isArrived = false;
     }
