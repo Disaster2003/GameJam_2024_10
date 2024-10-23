@@ -422,6 +422,8 @@ MonoBehaviour:
   _timer2: 0
   _Mtimer: 0
   _HitStop: 0
+  _HCount: 0.5
+  _MCount: 2
   _target: {fileID: 1075940597}
   _cycle: 0.2
   BulletObj: {fileID: 2674119198624501569, guid: 871a787b7d92f194491aa5ebc4748d28, type: 3}

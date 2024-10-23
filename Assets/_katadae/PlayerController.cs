@@ -35,6 +35,9 @@ public class PlayerController : MonoBehaviour
     public float _Mtimer;
     public bool _HitStop;
 
+    public float _HCount;//ƒqƒbƒgŽžŠÔ‘€ì
+    public int _MCount;//–³“GŽžŠÔ‘€ì
+
     // “_–Å‚³‚¹‚é‘ÎÛ
     [SerializeField] private Renderer _target;
     // “_–ÅŽüŠú[s]
@@ -110,7 +113,7 @@ public class PlayerController : MonoBehaviour
 
                
                 _timer2 += Time.deltaTime;
-                if (_timer2 >= 5f)
+                if (_timer2 >= _MCount)
                 {
                     _Mtimer = 0;
                     _timer2 = 0;
@@ -142,7 +145,7 @@ public class PlayerController : MonoBehaviour
         if (_HitStop)
         {
             _timer += Time.deltaTime;
-            if (_timer >= 0.5f)
+            if (_timer >= _HCount)
             {
                 _timer = 0;
                 _HitStop = false;
