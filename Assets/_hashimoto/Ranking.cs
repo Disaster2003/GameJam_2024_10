@@ -22,11 +22,11 @@ public class Ranking : MonoBehaviour
     {
         JudgeRank();
 
-        Texts[0].text = "今回のスコア"+score.ToString();
+        Texts[0].text = "今回のスコア"+score.ToString("F0");
 
         for(idx =1; idx < Rank.Length; idx++)
         {
-            Texts[idx].text = idx + Rank[idx].ToString();
+            Texts[idx].text = idx + Rank[idx].ToString("F0");
         }
 
     }
