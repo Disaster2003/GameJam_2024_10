@@ -40,7 +40,10 @@ public class EnemyBase : MonoBehaviour
     /// </summary>
     public void Dead()
     {
-        ItemDrop();
+        if (hp <= 0)
+        {
+            ItemDrop();
+        }
 
         // Ž©g‚Ì”j‰ó
         Destroy(gameObject);

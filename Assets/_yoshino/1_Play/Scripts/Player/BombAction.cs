@@ -23,6 +23,14 @@ public class BombAction : MonoBehaviour
         // æ“¾‚µ‚½GameObject‚ğˆê‚Â‚¸‚Â”j‰ó
         foreach (GameObject enemy in enemies)
         {
+            if (enemy.name.Contains("EnemyBullet"))
+            {
+                // ’e‚Ì”j‰ó
+                Destroy(enemy);
+                continue;
+            }
+
+            // “G‚Ì€–S‰‰o‚Ö
             GetComponent<EnemyBase>().Dead();
         }
     }
