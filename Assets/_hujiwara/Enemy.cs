@@ -14,12 +14,19 @@ public class Enemy : MonoBehaviour
     public float EAI = 1f;             //Enemies Appear Intervalの略，敵が出現する間隔
     public float EAPY = 0f;            //－－positionの略,エネミーがが出現するｙ座標
     public float EMS = 3f;             //Enemy Move Speedの略、エネミーの移動速度
-    // Start is called before the first frame update
+    public float duration = 2.0f; // 演出の所要時間（秒）
+    public int transparency = 128; // 透明度 (0 ～ 255)
+    private float elapsedTime = 0.0f; // 経過時間
+    private bool isEffectPlaying = false; // 演出が再生中かどうかのフラグ
+    private SpriteRenderer sr; // エネミーのスプライトレンダラー
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         life = GetComponent<Life>();
         InvokeRepeating(nameof(Appear), 0f, EAI);
+        sr = GetComponent<SpriteRenderer>();
     }
    
    　public void Appear()           //エネミーを右から出現させる処理
@@ -54,6 +61,20 @@ public class Enemy : MonoBehaviour
         
         
     }
+    public void Animation()           //この関数名は(仮)です,
+    {                                 //この関数が呼び出されると、エネミーの透明度が即時に設定され、演出が開始されます。
+        // 透明度を設定
+        stp(transparency);
+        elapsedTime = 0.0f; // 経過時間をリセット
+        isEffectPlaying = true; // 演出を再生状態に設定
+
+    }
+    private void stp(int alpha)       // スプライトの透明度を設定する関数,SetTransparencyの略
+    {
+        Color color = sr.color;
+        color.a = Mathf.Clamp(alpha / 255f, 0f, 1f); // 0 ～ 1 の範囲に正規化
+        sr.color = color;
+    }
 
     public void Damege(int damege)     //敵がダメージを受けるときの処理
     {
@@ -76,6 +97,17 @@ public class Enemy : MonoBehaviour
         if (EnemyHP < 0)
         {
             life.NormalDestory();
+        }
+
+        if (isEffectPlaying)
+        {
+            elapsedTime += Time.deltaTime;       // 経過時間を更新
+            if (elapsedTime >= duration)         // 経過時間が所要時間を超えた場合
+            {
+                isEffectPlaying = false;         // 演出終了
+                /*ここに破壊処理を追加*/
+                Destroy(gameObject);
+            }
         }
     }
 }
