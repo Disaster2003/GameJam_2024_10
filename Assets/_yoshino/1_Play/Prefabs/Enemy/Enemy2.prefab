@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1708820107044825577}
   - component: {fileID: -2100925471224168299}
   - component: {fileID: 4706674155489677561}
-  - component: {fileID: 2952611886217646692}
   m_Layer: 0
   m_Name: Enemy2
   m_TagString: Enemy
@@ -179,6 +178,7 @@ MonoBehaviour:
   hp: 1
   item: {fileID: 8284826019610562523, guid: f413fad7db02fe541ad97c42df85dce2, type: 3}
   probability: 1
+  timeDeath: 0
 --- !u!114 &4706674155489677561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,19 +192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state_enemy: 1
-  speedMove: 1
+  speedMove: 0
   positionGoal: {x: 5, y: 0, z: 0}
   widthVertical: 5
   timeWait: 1
---- !u!114 &2952611886217646692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1756864356135991260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddb764c46cf1b1d478a6f96462784b11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

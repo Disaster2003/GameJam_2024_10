@@ -231,6 +231,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -1210,7 +1223,53 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Key02_0: 6145363535329159939
+      Key02_1: -4256857691605446209
+      Key02_10: -41560088304107600
+      Key02_11: -866548023661637410
+      Key02_12: -1471835999404362513
+      Key02_13: -4343431138980839994
+      Key02_14: -9073106300930520836
+      Key02_15: -5473664461104729978
+      Key02_16: 8917448541674835292
+      Key02_17: -7983490529667071688
+      Key02_18: 8643838717765066073
+      Key02_19: -8738177590120600750
+      Key02_2: -9089751763115976313
+      Key02_20: -2404515829322144482
+      Key02_21: -37428424728924101
+      Key02_22: -3979499637258480431
+      Key02_23: 2270487273775380566
+      Key02_24: -5319410211079501802
+      Key02_25: 3344712247805791441
+      Key02_26: -6378428559155684155
+      Key02_27: -4292024047362307915
+      Key02_28: 7151009880628097949
+      Key02_29: -4825536992641580776
+      Key02_3: -3087987109278418793
+      Key02_30: -6610282713772456589
+      Key02_31: 5775729351488136552
+      Key02_32: 6613477704331169450
+      Key02_33: -2505693550321986168
+      Key02_34: -5752003899670465297
+      Key02_35: 1956189118691803109
+      Key02_36: 6016334211966429638
+      Key02_37: -5792287954724987672
+      Key02_38: -4535253286141762766
+      Key02_39: -538114430519878334
+      Key02_4: 370845785103420649
+      Key02_40: -351501600249532279
+      Key02_41: 3312878824876981928
+      Key02_42: 422700468228628303
+      Key02_43: 204721277838959603
+      Key02_44: 5836001521654128532
+      Key02_45: -8931516840147421716
+      Key02_5: 679561089583958451
+      Key02_6: 6970920688307054771
+      Key02_7: 8859577312997933682
+      Key02_8: 8634679556626241277
+      Key02_9: 3310053395468745372
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

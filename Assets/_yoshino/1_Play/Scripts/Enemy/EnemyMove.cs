@@ -55,12 +55,6 @@ public class EnemyMove : MonoBehaviour
                 transform.Translate(speedMove * -Time.deltaTime, 0, 0);
                 break;
             case STATE_ENEMY.LEFT_AND_RIGHT:
-                if(transform.position == positionGoal)
-                {
-                    // é©êgÇÃîjâÛ
-                    Destroy(gameObject);
-                }
-
                 transform.position = Vector3.MoveTowards(transform.position, positionGoal, speedMove * Time.deltaTime);
                 break;
             case STATE_ENEMY.WAVE_MOVE:
