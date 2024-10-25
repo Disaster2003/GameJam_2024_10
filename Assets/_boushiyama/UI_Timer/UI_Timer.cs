@@ -28,8 +28,7 @@ public class UI_Timer : MonoBehaviour
     }
 
     //ƒV[ƒ“Ø‚è‘Ö‚¦Œã‚ÉText‚ğÄæ“¾
-
-    [System.Obsolete]
+  
     private void Start()
     {
         if(survivalTimeText == null)
