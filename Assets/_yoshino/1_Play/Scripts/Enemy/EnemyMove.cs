@@ -9,7 +9,10 @@ public class EnemyMove : MonoBehaviour
         STRAIGHT,       // ’¼i
         LEFT_AND_RIGHT, // ¶‰E
         WAVE_MOVE,      // “®‚«‚È‚ª‚çSin”g
-        WAVE_STAY       // —¯‚Ü‚Á‚ÄSin”g
+        WAVE_STAY,      // —¯‚Ü‚Á‚ÄSin”g
+        DOWN,           // ‰º~
+        UP,             // ã¸
+        WANDER,         // œpœj
     }
     [SerializeField, Header("“G‚Ì“®‚«•û")]
     private STATE_ENEMY state_enemy;
@@ -21,9 +24,10 @@ public class EnemyMove : MonoBehaviour
     private Vector3 positionGoal;
     [SerializeField, Header("ã‰º•")]
     private float widthVertical;
-    private bool isArrived;
+    private bool isArrived; // true = –Ú•W’n“_‚É“’…, false = –Ú•W’n“_‚É–¢“’B
     [SerializeField, Header("‘Ò‹@ŠÔ")]
     private float timeWait;
+    private float timer;
 
     // Start is called before the first frame update
     void Start()
@@ -85,6 +89,27 @@ public class EnemyMove : MonoBehaviour
 
                     transform.position = Vector3.MoveTowards(transform.position, positionGoal, speedMove * Time.deltaTime);
                 }
+                break;
+            case STATE_ENEMY.DOWN:
+                transform.Translate(speedMove * -Time.deltaTime, speedMove * 0.5f * -Time.deltaTime, 0);
+                break;
+            case STATE_ENEMY.UP:
+                transform.Translate(speedMove * -Time.deltaTime, speedMove * 0.5f * Time.deltaTime, 0);
+                break;
+            case STATE_ENEMY.WANDER:
+                if(speedMove < 0 && timer >= timeWait)
+                {
+                    timeWait = 0;
+                    speedMove *= -1;
+                }
+                else if(timer >= timeWait * 0.5f)
+                {
+                    timeWait = 0;
+                    speedMove *= -1;
+                }
+                timer += Time.deltaTime;
+
+                transform.Translate(speedMove * -Time.deltaTime, 0, 0);
                 break;
         }
     }

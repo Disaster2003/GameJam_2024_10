@@ -12,10 +12,31 @@ public class EnemyBase : MonoBehaviour
     [SerializeField, Header("1/?でアイテムドロップ")]
     private int probability;
 
+    [SerializeField, Header("半透明化の時間")]
+    private float timeDeath;
+    private float timerUntilDeath;
+
     // Start is called before the first frame update
     void Start()
     {
         GetComponent<Rigidbody2D>().freezeRotation = true; // 回転不可
+
+        // タイマーの初期化
+        timerUntilDeath = 0;
+    }
+
+    private void FixedUpdate()
+    {
+        if (GetComponent<SpriteRenderer>().color.a != 1)
+        {
+            if (timerUntilDeath >= timeDeath)
+            {
+                // 自身の破壊
+                Destroy(gameObject);
+            }
+            // 死が迫る
+            timerUntilDeath += Time.fixedDeltaTime;
+        }         
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -30,6 +51,7 @@ public class EnemyBase : MonoBehaviour
 
             if (hp <= 0)
             {
+                // 死亡開始
                 Dead();
             }
         }
@@ -45,8 +67,8 @@ public class EnemyBase : MonoBehaviour
             ItemDrop();
         }
 
-        // 自身の破壊
-        Destroy(gameObject);
+        // 半透明化
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
     }
 
     /// <summary>

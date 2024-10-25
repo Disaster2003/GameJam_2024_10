@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class PlayerComponent : MonoBehaviour
 {
@@ -33,6 +34,8 @@ public class PlayerComponent : MonoBehaviour
     [SerializeField, Header("キー入力不可時間")]
     private float timeImpossibleInputKey;
     private float timerInvincible;
+    [SerializeField, Header("点滅周期")]
+    private float cycleBlink;
 
     // Start is called before the first frame update
     void Start()
@@ -173,8 +176,8 @@ public class PlayerComponent : MonoBehaviour
         {
             // 無敵時間の減少
             timerInvincible += -Time.deltaTime;
+            // 内部時刻timeにおける明滅状態を反映
+            sr.enabled = Mathf.Repeat(timerInvincible, cycleBlink) <= cycleBlink * 0.5f;
         }
-
-        sr.color = new Color(1, 1, 1, 0.5f);
     }
 }

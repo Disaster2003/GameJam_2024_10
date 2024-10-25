@@ -30,6 +30,7 @@ public class EnemyBulletSpawn : MonoBehaviour
     {
         if (timerSpawn <= 0)
         {
+            // ’e‚Ì¶¬
             timerSpawn = intervalSpawnBullet;
             Instantiate(bullet, transform.position + Vector3.left, Quaternion.identity);
         }
