@@ -14,7 +14,7 @@ public class BombCharge : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UICounter = GameObject.Find("txtTimer");
+        UICounter = GameObject.Find("txtItemCounter");
         speedMove = 0; // ˆÚ“®‘¬“x‚Ì‰Šú‰»
     }
 

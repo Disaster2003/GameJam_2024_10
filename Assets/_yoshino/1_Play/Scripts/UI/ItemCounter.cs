@@ -11,12 +11,15 @@ public class ItemCounter : MonoBehaviour
     private int countBombChargeMax;
     private int counterBombCharge;
 
-    [SerializeField, Header("カウンター横")]
+    [SerializeField, Header("画像を切り替えるイメージ")]
     private Image imgBomb;
     [SerializeField, Header("通常時画像")]
     private Sprite spNormal;
     [SerializeField, Header("最大値画像")]
     private Sprite spMax;
+
+    [SerializeField, Header("アイテム数表示用の文字")]
+    private CountFont[] countFonts = new CountFont[2];
 
     // Start is called before the first frame update
     void Start()
@@ -29,10 +32,10 @@ public class ItemCounter : MonoBehaviour
 
         // ボムチャージの初期化
         counterBombCharge = 0;
-        GetComponent<Text>().text = $"{counterBombCharge}/{countBombChargeMax}";
+        //GetComponent<Text>().text = $"{counterBombCharge}/{countBombChargeMax}";
 
         //// 画像の初期化
-        //imgBomb.sprite = spNormal;
+        imgBomb.sprite = spNormal;
     }
 
     /// <summary>
@@ -53,13 +56,19 @@ public class ItemCounter : MonoBehaviour
         if (counterBombCharge == countBombChargeMax)
         {
             //// 画像変更
-            //imgBomb.sprite = spMax;
+            imgBomb.sprite = spMax;
         }
         else if (counterBombCharge < countBombChargeMax)
         {
             // ボムチャージ数を増やす
             counterBombCharge++;
-            GetComponent<Text>().text = $"{counterBombCharge}/{countBombChargeMax}";
+            if(counterBombCharge>=10)
+            {
+                countFonts[1].SetSprite(counterBombCharge / 10);
+            }
+            countFonts[0].SetSprite(counterBombCharge % 10);
+
+            //GetComponent<Text>().text = $"{counterBombCharge}/{countBombChargeMax}";
         }
     }
 
@@ -69,6 +78,8 @@ public class ItemCounter : MonoBehaviour
     public void ResetBombChargeCounter()
     { 
         counterBombCharge = 0;
-        //imgBomb.sprite= spNormal;
+        countFonts[0].SetSprite(0);
+        countFonts[1].SetSprite(0);
+        imgBomb.sprite= spNormal;
     }
 }

@@ -9,6 +9,9 @@ public class Timer : MonoBehaviour
 
     private float timerSurvival;
 
+    [SerializeField, Header("ŠÔ•\¦—p‚Ì•¶š")]
+    private CountFont[] countFonts = new CountFont[4];
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,8 +34,14 @@ public class Timer : MonoBehaviour
         int minute = Mathf.FloorToInt(timerSurvival / 60); // •ª‚ğŒvZ
         int second = Mathf.FloorToInt(timerSurvival % 60); // •b‚ğŒvZ
 
-        // •ª‚Æ•b‚ğ"ZZmZZs"Œ`®‚Å•\¦
-        GetComponent<Text>().text = $"{minute}m{second}s";
+        //•ª‚Ì•\¦
+        countFonts[1].SetSprite(minute);
+
+        //•b‚Ì•\¦
+        countFonts[2].SetSprite(second/10);
+        countFonts[3].SetSprite(second%10);
+
+
     }
 
     /// <summary>

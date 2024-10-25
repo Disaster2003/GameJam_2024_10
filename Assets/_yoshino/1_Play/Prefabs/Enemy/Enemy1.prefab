@@ -80,8 +80,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 165e6c99258b89a4490a51b036195334, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -177,9 +177,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  item: {fileID: 8284826019610562523, guid: f413fad7db02fe541ad97c42df85dce2, type: 3}
+  item: {fileID: 8284826019610562523, guid: 3fe93e7161e09ba4b8ef41cf40c73721, type: 3}
   probability: 0
   timeDeath: 2
+  DeathSprite: {fileID: 21300000, guid: 8b6aab6f7b7c390479e7e8febd41aaf9, type: 3}
 --- !u!114 &5110026584177068109
 MonoBehaviour:
   m_ObjectHideFlags: 0

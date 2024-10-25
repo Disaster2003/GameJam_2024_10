@@ -29,17 +29,25 @@ public class EnemyMove : MonoBehaviour
     private float timeWait;
     private float timer;
 
+    private EnemyBase enemyBase;
+
+
     // Start is called before the first frame update
     void Start()
     {
         // “’…ó‘Ô‚Ì‰Šú‰»
         isArrived = false;
+        enemyBase = GetComponent<EnemyBase>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Move();
+        if (!enemyBase.GetDeathFlag())
+        {
+            Move();
+        }
+       
     }
 
     /// <summary>

@@ -37,6 +37,14 @@ public class PlayerComponent : MonoBehaviour
     [SerializeField, Header("“_–ÅüŠú")]
     private float cycleBlink;
 
+    private Animator animator;
+
+    [SerializeField, Header("’Êí‚Ì‰æ‘œ")]
+    private Sprite normalSprite;
+
+    [SerializeField, Header("”í’e‚Ì‰æ‘œ")]
+    private Sprite hitSprites;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,6 +71,8 @@ public class PlayerComponent : MonoBehaviour
         sr.color = Color.white;
         isInvincible = false;
         timerInvincible = 0;
+
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -147,6 +157,9 @@ public class PlayerComponent : MonoBehaviour
             hp--;
             isInvincible = true;
             timerInvincible = timeInvincible;
+
+            SetDamageSprite();
+
         }
     }
 
@@ -171,6 +184,9 @@ public class PlayerComponent : MonoBehaviour
         {
             // –³“GI—¹
             isInvincible = false;
+            animator.enabled = true;
+            sr.sprite = normalSprite;
+            sr.enabled = true;
         }
         else
         {
@@ -180,4 +196,11 @@ public class PlayerComponent : MonoBehaviour
             sr.enabled = Mathf.Repeat(timerInvincible, cycleBlink) <= cycleBlink * 0.5f;
         }
     }
+
+    public void SetDamageSprite()
+    {
+        animator.enabled = false;
+        sr.sprite = hitSprites;
+    }
+
 }

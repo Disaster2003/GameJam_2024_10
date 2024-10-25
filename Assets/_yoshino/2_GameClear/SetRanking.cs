@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class SetRanking : MonoBehaviour
 {
-    [SerializeField, Header("¡‰ñ‚Ìƒ^ƒCƒ€")]
-    private Text txtThisTime;
+    [SerializeField, Header("¡‰ñ‚Ìƒ^ƒCƒ€•\¦—p‚ÌƒIƒuƒWƒFƒNƒg")]
+    private CountFont[] countFonts = new CountFont[3];
     [SerializeField, Header("ƒ‰ƒ“ƒLƒ“ƒO—pƒ^ƒCƒ€”z—ñ")]
     private Text[] txtRank;
     private float thisTime;
@@ -16,11 +16,16 @@ public class SetRanking : MonoBehaviour
     void Start()
     {
         thisTime = PlayerPrefs.GetFloat("Time");
-        int minute = Mathf.FloorToInt(thisTime / 60); // •ª‚ğŒvZ
-        int second = Mathf.FloorToInt(thisTime % 60); // •b‚ğŒvZ
 
-        // •ª‚Æ•b‚ğ"ZZmZZs"Œ`®‚Å•\¦
-        txtThisTime.text = $"{minute}m{second}s";
+        int ThisTime = (int)thisTime;
+
+        int firstNumber = ThisTime / 100;
+        int secondNumber = (ThisTime - firstNumber * 100) / 10 ;
+        int thirdNumber = ThisTime - firstNumber * 100 - secondNumber * 10 ;
+
+        countFonts[0].SetSprite(firstNumber);
+        countFonts[1].SetSprite(secondNumber);
+        countFonts[2].SetSprite(thirdNumber);
 
         if (PlayerPrefs.HasKey("Rank1"))
         {
@@ -65,11 +70,10 @@ public class SetRanking : MonoBehaviour
     {
         for (int idx = 1; idx <= 8; idx++)
         {
-            int minute = Mathf.FloorToInt(rank[idx] / 60); // •ª‚ğŒvZ
-            int second = Mathf.FloorToInt(rank[idx] % 60); // •b‚ğŒvZ
+            
 
             // •ª‚Æ•b‚ğ"ZZmZZs"Œ`®‚Å•\¦
-            txtRank[idx - 1].text = $"{minute}m{second}s";
+            txtRank[idx - 1].text = $"{rank[idx]}";
 
             string keyString = "Rank" + idx;
             PlayerPrefs.SetFloat(keyString, rank[idx]);

@@ -16,6 +16,11 @@ public class EnemyBase : MonoBehaviour
     private float timeDeath;
     private float timerUntilDeath;
 
+    [SerializeField, Header("”¼“§–¾‚ÌŒ©‚½–Ú")]
+    private Sprite DeathSprite;
+
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +32,7 @@ public class EnemyBase : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (GetComponent<SpriteRenderer>().color.a != 1)
+        if (GetDeathFlag())
         {
             if (timerUntilDeath >= timeDeath)
             {
@@ -69,6 +74,9 @@ public class EnemyBase : MonoBehaviour
 
         // ”¼“§–¾‰»
         GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
+
+        // ‰æ‘œ‚ÌØ‚è‘Ö‚¦
+        GetComponent<SpriteRenderer>().sprite = DeathSprite;
     }
 
     /// <summary>
@@ -83,5 +91,11 @@ public class EnemyBase : MonoBehaviour
             // ƒAƒCƒeƒ€‚Ì¶¬
             Instantiate(item, transform.position, Quaternion.identity);
         }
+    }
+
+    public bool GetDeathFlag()
+    {
+        //”¼“§–¾‚Ìó‘Ô‚¾‚Ætrue‚ğ•Ô‚·
+        return GetComponent<SpriteRenderer>().color.a != 1;
     }
 }
