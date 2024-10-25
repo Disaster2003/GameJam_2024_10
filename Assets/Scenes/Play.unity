@@ -214,9 +214,9 @@ Transform:
   m_GameObject: {fileID: 470513736}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 28.6, y: -5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -28.3, y: -5, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -286,9 +286,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a1c0bf0df01344ba8be33bb500525d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startposition: {x: -9.7, y: -5, z: 0}
-  positionInitialize: {x: 28.7, y: -5, z: 0}
-  position_xEnd: -48
+  startposition: {x: -9.5, y: -5, z: 0}
+  positionInitialize: {x: 9.7, y: -5, z: 0}
+  position_xEnd: -28.3
   speedMove: -5
 --- !u!1 &511166526
 GameObject:
@@ -350,7 +350,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -12
-  m_Sprite: {fileID: -9121269672239501656, guid: 1cce8fde694b15243978261ba2cbf681, type: 3}
+  m_Sprite: {fileID: 3949790134347856562, guid: 78bf297c659af784ebba7281d9e1cbff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -663,6 +663,7 @@ MonoBehaviour:
   hpMax: 5
   timeInvincible: 2
   timeImpossibleInputKey: 0.5
+  cycleBlink: 0
 --- !u!58 &646905389
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1098,7 +1099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b43a9f42a73037a45abe739bc0d39106, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intervalPhase: 3c00000078000000
+  intervalPhase: 1e0000003c000000
 --- !u!1 &1179691608
 GameObject:
   m_ObjectHideFlags: 0
@@ -1714,11 +1715,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyArray:
   - {fileID: 7275907274861779879, guid: e259d8a6ad1e5684dad47f4f145e5766, type: 3}
-  - {fileID: 1756864356135991260, guid: ddb1b46a1c86dd8499d2e480f5f84caa, type: 3}
-  - {fileID: 654109235532049313, guid: 8381008568a8e0946a9f9febe6ddc34f, type: 3}
-  - {fileID: 8250357103199578416, guid: 301c8e47e07b62d48b3775508e0a2252, type: 3}
   intervalSpawnEnemy: 3
-  countSpawnMax: 10
+  countSpawnMax: 1
 --- !u!1 &1782962658
 GameObject:
   m_ObjectHideFlags: 0
@@ -1889,9 +1887,9 @@ Transform:
   m_GameObject: {fileID: 1922097348}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 28.7, y: -5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 9.7, y: -5, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1907,9 +1905,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a1c0bf0df01344ba8be33bb500525d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startposition: {x: 28.7, y: -5, z: 0}
-  positionInitialize: {x: 28.7, y: -5, z: 0}
-  position_xEnd: -48
+  startposition: {x: 9.7, y: -5, z: 0}
+  positionInitialize: {x: 9.7, y: -5, z: 0}
+  position_xEnd: -28.3
   speedMove: -5
 --- !u!1 &2036271161
 GameObject:

@@ -178,7 +178,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   item: {fileID: 8284826019610562523, guid: f413fad7db02fe541ad97c42df85dce2, type: 3}
-  probability: 1
+  probability: 0
+  timeDeath: 2
 --- !u!114 &5110026584177068109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,7 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0884fcd3309f6e4887174591d3b9cea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state_enemy: 0
+  state_enemy: 1
   speedMove: 1
   positionGoal: {x: 5, y: 0, z: 0}
   widthVertical: 5
