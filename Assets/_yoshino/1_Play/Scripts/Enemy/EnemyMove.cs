@@ -7,7 +7,7 @@ public class EnemyMove : MonoBehaviour
     private enum STATE_ENEMY
     {
         STRAIGHT,       // íºêi
-        LEFT_AND_RIGHT, // ç∂âE
+        LittleMove,     // ÇøÇÂÇ¢êiÇÒÇ≈é~Ç‹ÇÈ
         WAVE_MOVE,      // ìÆÇ´Ç»Ç™ÇÁSinîg
         WAVE_STAY,      // óØÇ‹Ç¡ÇƒSinîg
         DOWN,           // â∫ç~
@@ -54,7 +54,7 @@ public class EnemyMove : MonoBehaviour
             case STATE_ENEMY.STRAIGHT:
                 transform.Translate(speedMove * -Time.deltaTime, 0, 0);
                 break;
-            case STATE_ENEMY.LEFT_AND_RIGHT:
+            case STATE_ENEMY.LittleMove:
                 transform.position = Vector3.MoveTowards(transform.position, positionGoal, speedMove * Time.deltaTime);
                 break;
             case STATE_ENEMY.WAVE_MOVE:
@@ -91,14 +91,14 @@ public class EnemyMove : MonoBehaviour
                 transform.Translate(speedMove * -Time.deltaTime, speedMove * 0.5f * Time.deltaTime, 0);
                 break;
             case STATE_ENEMY.WANDER:
-                if(speedMove < 0 && timer >= timeWait)
+                if(speedMove > 0 && timer >= timeWait)
                 {
-                    timeWait = 0;
+                    timer = 0;
                     speedMove *= -1;
                 }
-                else if(timer >= timeWait * 0.5f)
+                else if(speedMove < 0 && timer >= timeWait * 0.5f)
                 {
-                    timeWait = 0;
+                    timer = 0;
                     speedMove *= -1;
                 }
                 timer += Time.deltaTime;

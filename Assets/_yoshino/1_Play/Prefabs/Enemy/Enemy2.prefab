@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1708820107044825577}
   - component: {fileID: -2100925471224168299}
   - component: {fileID: 4706674155489677561}
+  - component: {fileID: -4889577218478428633}
   m_Layer: 0
   m_Name: Enemy2
   m_TagString: Enemy
@@ -196,3 +197,15 @@ MonoBehaviour:
   positionGoal: {x: 5, y: 0, z: 0}
   widthVertical: 5
   timeWait: 1
+--- !u!114 &-4889577218478428633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756864356135991260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddb764c46cf1b1d478a6f96462784b11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
