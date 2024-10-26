@@ -9,7 +9,7 @@ public class BombAction : MonoBehaviour
         // ポーズ中
         if(GameManager.GetInstance().GetIsPausing()) return;
 
-        EnemyDelete();
+        //EnemyDelete();
     }
 
     /// <summary>
@@ -33,5 +33,10 @@ public class BombAction : MonoBehaviour
             // 敵の死亡演出へ
             GetComponent<EnemyBase>().Dead();
         }
+    }
+
+    public void BombActionResult()
+    {
+        EnemyDelete();
     }
 }

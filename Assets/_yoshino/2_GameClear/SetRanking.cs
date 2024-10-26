@@ -23,6 +23,11 @@ public class SetRanking : MonoBehaviour
         int secondNumber = (ThisTime - firstNumber * 100) / 10 ;
         int thirdNumber = ThisTime - firstNumber * 100 - secondNumber * 10 ;
 
+        Debug.Log(firstNumber + ":100Œ…");
+        Debug.Log(secondNumber + ":10Œ…");
+        Debug.Log(thirdNumber + ":1Œ…");
+
+
         countFonts[0].SetSprite(firstNumber);
         countFonts[1].SetSprite(secondNumber);
         countFonts[2].SetSprite(thirdNumber);
@@ -73,7 +78,7 @@ public class SetRanking : MonoBehaviour
             
 
             // •ª‚Æ•b‚ğ"ZZmZZs"Œ`®‚Å•\¦
-            txtRank[idx - 1].text = $"{rank[idx]}";
+            txtRank[idx - 1].text = $"{(int)rank[idx]}";
 
             string keyString = "Rank" + idx;
             PlayerPrefs.SetFloat(keyString, rank[idx]);

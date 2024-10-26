@@ -82,4 +82,9 @@ public class ItemCounter : MonoBehaviour
         countFonts[1].SetSprite(0);
         imgBomb.sprite= spNormal;
     }
+
+    public bool GetisBombChargeMax()
+    {
+        return counterBombCharge >= countBombChargeMax;
+    }
 }

@@ -22,6 +22,8 @@ public class RandomSpriteSelector: MonoBehaviour
 
         // ランダムなスプライトを選択
         SelectRandomSprite();
+
+        Destroy(gameObject, 3f);
     }
 
     void SelectRandomSprite()

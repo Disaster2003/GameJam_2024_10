@@ -20,8 +20,7 @@ public class PlayerComponent : MonoBehaviour
 
     [SerializeField, Header("íe")]
     private GameObject bullet;
-    [SerializeField, Header("îöíe")]
-    private GameObject bomb;
+    
 
     [SerializeField, Header("ç≈ëÂëÃóÕ")]
     private int hpMax;
@@ -84,7 +83,6 @@ public class PlayerComponent : MonoBehaviour
         if (timerInvincible > timeInvincible - timeImpossibleInputKey) return;
         Move();
         SpawnBullet();
-        SpawnBomb();
     }
 
     /// <summary>
@@ -132,16 +130,7 @@ public class PlayerComponent : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// îöíeÇê∂ê¨Ç∑ÇÈ
-    /// </summary>
-    private void SpawnBomb()
-    {
-        if(Input.GetKeyDown(KeyCode.B))
-        {
-            Instantiate(bomb, transform.position + Vector3.right, Quaternion.identity);
-        }
-    }
+   
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -150,17 +139,29 @@ public class PlayerComponent : MonoBehaviour
 
         if(collision.CompareTag("Enemy"))
         {
-            // ñ≥ìGíÜ
-            if (isInvincible) return;
-
-            // É_ÉÅÅ[ÉW
-            hp--;
-            isInvincible = true;
-            timerInvincible = timeInvincible;
-
-            SetDamageSprite();
-
+            DamageFunc();
         }
+        else if (collision.CompareTag("Bullet"))
+        {
+            BulletComponent bullet = collision.GetComponent<BulletComponent>();
+            if (bullet.GetisPlayerBullet())
+            {
+                DamageFunc();
+            }
+        }
+    }
+
+    private void DamageFunc()
+    {
+        // ñ≥ìGíÜ
+        if (isInvincible) return;
+
+        // É_ÉÅÅ[ÉW
+        hp--;
+        isInvincible = true;
+        timerInvincible = timeInvincible;
+
+        SetDamageSprite();
     }
 
     /// <summary>

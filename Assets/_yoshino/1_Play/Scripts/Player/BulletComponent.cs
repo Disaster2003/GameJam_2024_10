@@ -52,4 +52,9 @@ public class BulletComponent : MonoBehaviour
                 break;
         }
     }
+
+    public bool Getsb()
+    {
+        return state_bullet == STATE_BULLET.PLAYER;
+    }
 }

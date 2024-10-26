@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
         if (PlayerComponent.GetInstance().GetHp() <= 0)
         {
             // ゲームオーバー画面へ
-            SetNextScene(STATE_SCENE.OVER);
+            SetNextScene(STATE_SCENE.CLEAR);
         }
     }
 
@@ -99,10 +99,11 @@ public class GameManager : MonoBehaviour
     /// <param name="_state_scene">設定するシーン</param>
     public void SetNextScene(STATE_SCENE _state_scene = STATE_SCENE.NONE)
     {
+       
         state_scene = _state_scene;
         imgFade.enabled = true;
         isFadeOut = true;
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
     }
 
     /// <summary>
@@ -150,7 +151,7 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// ポーズ処理
     /// </summary>
-    private void SetPause()
+    public void SetPause()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
@@ -168,4 +169,6 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1;
         }
     }
+
+
 }

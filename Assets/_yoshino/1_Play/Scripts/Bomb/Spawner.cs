@@ -10,10 +10,10 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) // スペースキーが押されたら
-        {
-            SpawnAndLaunch();
-        }
+        //if (Input.GetKeyDown(KeyCode.B))
+        //{
+        //   SpawnAndLaunch();
+        //}
     }
 
     void SpawnAndLaunch()
@@ -30,6 +30,11 @@ public class Spawner : MonoBehaviour
     void Start()
     {
 
+    }
+
+    public void SpawnBomb()
+    {
+        SpawnAndLaunch();
     }
 }
     
