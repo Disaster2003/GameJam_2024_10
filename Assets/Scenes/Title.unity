@@ -2633,7 +2633,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 232106828301671649, guid: 1a734baea8d0e2843b443891a3850dab, type: 3}
       propertyPath: timeClear
-      value: 10
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 2162166662804685005, guid: 1a734baea8d0e2843b443891a3850dab, type: 3}
       propertyPath: m_Pivot.x

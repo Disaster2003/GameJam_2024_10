@@ -44,6 +44,12 @@ public class PlayerComponent : MonoBehaviour
     [SerializeField, Header("”í’eŽž‚Ì‰æ‘œ")]
     private Sprite hitSprites;
 
+    [SerializeField, Header("ŽËŒ‚ŠÔŠu")]
+    private float shotIntervalBace = 0.2f;
+
+    private float shotInterval;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -72,12 +78,20 @@ public class PlayerComponent : MonoBehaviour
         timerInvincible = 0;
 
         animator = GetComponent<Animator>();
+
+        shotInterval = shotIntervalBace;
+        Debug.Log(shotInterval);
     }
 
     // Update is called once per frame
     void Update()
     {
         HitEffect();
+
+        if(shotInterval > 0)
+        {
+            shotInterval-= Time.deltaTime;
+        }
 
         // ƒ_ƒ[ƒWŽž‚Í“®‚¯‚È‚¢
         if (timerInvincible > timeInvincible - timeImpossibleInputKey) return;
@@ -126,7 +140,14 @@ public class PlayerComponent : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(bullet, transform.position + Vector3.right, Quaternion.identity);
+            
+            if (shotInterval <= 0)
+            {
+                Instantiate(bullet, transform.position + Vector3.right, Quaternion.identity);
+                shotInterval = shotIntervalBace;
+                Debug.Log(shotInterval);
+            }
+           
         }
     }
 
@@ -144,7 +165,10 @@ public class PlayerComponent : MonoBehaviour
         else if (collision.CompareTag("Bullet"))
         {
             BulletComponent bullet = collision.GetComponent<BulletComponent>();
-            if (bullet.GetisPlayerBullet())
+
+            if (bullet == null) return;
+
+            if (!bullet.GetisPlayerBullet())
             {
                 DamageFunc();
             }

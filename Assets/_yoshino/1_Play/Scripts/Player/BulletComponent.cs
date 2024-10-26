@@ -15,6 +15,9 @@ public class BulletComponent : MonoBehaviour
     [SerializeField, Header("移動速度")]
     private float speedMove;
 
+    [SerializeField, Header("破壊された後に出てくるエフェクト")]
+    private GameObject breakSprite;
+
     // Update is called once per frame
     void Update()
     {
@@ -32,13 +35,16 @@ public class BulletComponent : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // nullチェック
-        if (collision != null) return;
+        if (collision == null) return;
 
+       
         switch (state_bullet)
         {
             case STATE_BULLET.PLAYER:
                 if (collision.CompareTag("Enemy"))
-                {
+                {  
+                    //プレハブの生成
+                    Instantiate(breakSprite, transform.localPosition , Quaternion.identity);
                     // 自身の破壊
                     Destroy(gameObject);
                 }
@@ -46,6 +52,8 @@ public class BulletComponent : MonoBehaviour
             case STATE_BULLET.ENEMY:
                 if (collision.name == "Player")
                 {
+                    //プレハブの生成
+                    Instantiate(breakSprite, transform.localPosition, Quaternion.identity);
                     // 自身の破壊
                     Destroy(gameObject);
                 }
@@ -53,8 +61,15 @@ public class BulletComponent : MonoBehaviour
         }
     }
 
-    public bool Getsb()
+    public bool GetisPlayerBullet()
     {
         return state_bullet == STATE_BULLET.PLAYER;
     }
+
+    public void DestoryBullet()
+    {
+        Destroy(gameObject);
+    }
+
+
 }

@@ -15,9 +15,6 @@ public class BombManager : MonoBehaviour
 
    
 
-    [SerializeField, Header("É{ÉÄââèoÇÃéûä‘")]
-    private float bombTime = 2f;
-
     private EnemyBase enemyBase;
 
     // Start is called before the first frame update
@@ -31,15 +28,16 @@ public class BombManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.B))
         {
-            if (itemCounter.GetisBombChargeMax())
-            {
+            //if (itemCounter.GetisBombChargeMax())
+            //{
                 itemCounter.ResetBombChargeCounter();
                 for(int i = 0; i < spawner.Length; i++)
                 {
                     spawner[i].SpawnBomb();
                 }
                 EnemyDelete();
-            }
+                BulletDelete();
+           // }
 
 
         }
@@ -60,18 +58,31 @@ public class BombManager : MonoBehaviour
         // éÊìæÇµÇΩGameObjectÇàÍÇ¬Ç∏Ç¬îjâÛ
         foreach (GameObject enemy in enemies)
         {
-            if (enemy.name.Contains("EnemyBullet"))
-            {
-                // íeÇÃîjâÛ
-                Destroy(enemy);
-                continue;
-            }
-
-            enemyBase = enemy.GetComponent<EnemyBase>();
             // ìGÇÃéÄñSââèoÇ÷
-            enemyBase.Dead();
+            EnemyBase enemybase = enemy.GetComponent<EnemyBase>();
+            enemybase.Dead();
+        }
+
+    }
+
+    
+    private void BulletDelete()
+    {
+        GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
+        foreach (GameObject bullet in bullets)
+        {
+            BulletComponent bulletComponent = bullet.GetComponent<BulletComponent>();
+
+            if (bulletComponent != null)
+            {
+                if (!bulletComponent.GetisPlayerBullet())
+                {
+                    bulletComponent.DestoryBullet();
+                    continue;
+                }
+            }
         }
     }
 
-   
+
 }

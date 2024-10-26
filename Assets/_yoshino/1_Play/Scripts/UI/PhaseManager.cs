@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class PhaseManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class PhaseManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         if (instance == null)
         {
             // インスタンスの生成
@@ -27,14 +29,18 @@ public class PhaseManager : MonoBehaviour
     {
         // フェーズ進行
         float timer = GetComponent<Timer>().GetSurvivalTimer();
-        if (timer > 120)
+        if(timer > 1)
         {
-            UpdatePhase(timer, 1);
+            if (timer > 120)
+            {
+                UpdatePhase(timer, 1);
+            }
+            else
+            {
+                UpdatePhase(timer, 0);
+            }
         }
-        else
-        {
-            UpdatePhase(timer, 0);
-        }
+       
     }
 
     /// <summary>
@@ -58,8 +64,11 @@ public class PhaseManager : MonoBehaviour
         {
             // フェーズの更新
             indexPhase++;
-            //EnemyDelete();
-            //SpawnerChange();
+            EnemyDelete();
+            SpawnerChange();
+            BulletDelete();
+
+            Debug.Log("更新したよ");
         }
     }
 
@@ -74,15 +83,33 @@ public class PhaseManager : MonoBehaviour
         // 取得したGameObjectを一つずつ破壊
         foreach (GameObject enemy in enemies)
         {
-            if (enemy.name.Contains("EnemyBullet"))
+            // 敵の死亡演出へ
+            EnemyBase enemybase = enemy.GetComponent<EnemyBase>();
+            enemybase.Dead();
+        }
+
+    }
+
+    /// <summary>
+    /// フェーズ進行時に敵を消去する
+    /// </summary>
+    private void BulletDelete()
+    {
+        GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
+        foreach (GameObject bullet in bullets)
+        {
+            BulletComponent bulletComponent = bullet.GetComponent<BulletComponent>();
+
+            if(bulletComponent != null)
             {
-                // 弾の破壊
-                Destroy(enemy);
-                continue;
+                if (!bulletComponent.GetisPlayerBullet())
+                {
+                    bulletComponent.DestoryBullet();
+                    continue;
+                }
             }
 
-            // 敵の死亡演出へ
-            GetComponent<EnemyBase>().Dead();
+            
         }
     }
 
@@ -98,15 +125,32 @@ public class PhaseManager : MonoBehaviour
         // 配列内の各ゲームオブジェクトをループで処理
         foreach (GameObject obj in allObjects)
         {
+            //Debug.Log(indexPhase);
             // オブジェクトの名前が "Spawner" + indexPhase を含んでいるかチェック
-            if (obj.name.Contains("Spawner" + indexPhase))
+            //if (obj.name.Contains("Spawner" + indexPhase))
+            //{
+            //    obj.SetActive(true);
+            //}
+            //else if (obj.name.Contains("Spawner"))
+            //{
+            //    obj.SetActive(false);
+            //}
+
+            Debug.Log(indexPhase.ToString());
+
+            if(obj.name.Contains("Spawner"))
             {
-                obj.SetActive(true);
+                if(obj.name.Contains(indexPhase.ToString()))
+                {
+                    //Debug.Log("通ったよ");
+                    obj.SetActive(true);
+                }
+                else
+                {
+                    obj.SetActive(false);
+                }
             }
-            else if (obj.name.Contains("Spawner"))
-            {
-                obj.SetActive(false);
-            }
+
         }
     }
 }

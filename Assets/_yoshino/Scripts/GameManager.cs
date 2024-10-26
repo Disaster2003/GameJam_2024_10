@@ -29,16 +29,18 @@ public class GameManager : MonoBehaviour
 
     private bool isPausing; // true = ポーズ中, false = ポーズ解除
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             // インスタンスの生成
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
         // シーンの初期化
         state_scene = STATE_SCENE.TITLE;
 
