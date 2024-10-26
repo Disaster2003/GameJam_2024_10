@@ -21,6 +21,8 @@ public class ItemCounter : MonoBehaviour
     [SerializeField, Header("アイテム数表示用の文字")]
     private CountFont[] countFonts = new CountFont[2];
 
+    AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +38,8 @@ public class ItemCounter : MonoBehaviour
 
         //// 画像の初期化
         imgBomb.sprite = spNormal;
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     /// <summary>
@@ -62,6 +66,9 @@ public class ItemCounter : MonoBehaviour
         {
             // ボムチャージ数を増やす
             counterBombCharge++;
+
+            audioSource.Play();
+
             if(counterBombCharge>=10)
             {
                 countFonts[1].SetSprite(counterBombCharge / 10);

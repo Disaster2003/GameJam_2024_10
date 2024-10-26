@@ -49,8 +49,9 @@ public class PlayerComponent : MonoBehaviour
 
     private float shotInterval;
 
-    [SerializeField, Header("音楽ファイル")]
-    private AudioClip ac;
+    [SerializeField, Header("SE")]
+    private AudioClip[] audioClips = new AudioClip[2];
+    private AudioSource As;
 
     // Start is called before the first frame update
     void Start()
@@ -83,6 +84,8 @@ public class PlayerComponent : MonoBehaviour
 
         shotInterval = shotIntervalBace;
         Debug.Log(shotInterval);
+        
+        As = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -147,7 +150,8 @@ public class PlayerComponent : MonoBehaviour
             {
                 Instantiate(bullet, transform.position + Vector3.right, Quaternion.identity);
                 shotInterval = shotIntervalBace;
-                
+                As.clip = audioClips[0];
+                As.Play();
             }
            
         }
@@ -181,6 +185,9 @@ public class PlayerComponent : MonoBehaviour
     {
         // 無敵中
         if (isInvincible) return;
+
+        As.clip = audioClips[1];
+        As.Play();
 
         // ダメージ
         hp--;

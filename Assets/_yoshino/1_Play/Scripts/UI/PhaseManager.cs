@@ -15,6 +15,8 @@ public class PhaseManager : MonoBehaviour
 
     float Updateinterval;
 
+    private AudioSource audioSource;
+
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +33,8 @@ public class PhaseManager : MonoBehaviour
         indexPhase = 0;
 
         Updateinterval = 2f;
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -84,6 +88,8 @@ public class PhaseManager : MonoBehaviour
             BulletDelete();
 
             Updateinterval = 2f;
+
+            audioSource.Play();
 
             Debug.Log("çXêVÇµÇΩÇÊ");
         }

@@ -18,6 +18,8 @@ public class BulletComponent : MonoBehaviour
     [SerializeField, Header("破壊された後に出てくるエフェクト")]
     private GameObject breakSprite;
 
+    
+
     // Update is called once per frame
     void Update()
     {
@@ -39,9 +41,24 @@ public class BulletComponent : MonoBehaviour
 
         if(collision.CompareTag("Bullet"))
         {
-            Destroy(gameObject);
-            //プレハブの生成
-            Instantiate(breakSprite, transform.localPosition, Quaternion.identity);
+            BulletComponent bulletComponent = collision.GetComponent<BulletComponent>();
+
+            if(bulletComponent !=null)
+            {
+                if (bulletComponent.GetisPlayerBullet() && state_bullet == STATE_BULLET.ENEMY)
+                {
+                    Destroy(gameObject);
+                    //プレハブの生成
+                    Instantiate(breakSprite, transform.localPosition, Quaternion.identity);
+                }
+                if (!bulletComponent.GetisPlayerBullet() && state_bullet == STATE_BULLET.PLAYER)
+                {
+                    Destroy(gameObject);
+                    //プレハブの生成
+                    Instantiate(breakSprite, transform.localPosition, Quaternion.identity);
+                }
+            }
+            
         }
 
         switch (state_bullet)
@@ -53,6 +70,8 @@ public class BulletComponent : MonoBehaviour
                     Instantiate(breakSprite, transform.localPosition , Quaternion.identity);
                     // 自身の破壊
                     Destroy(gameObject);
+
+                    
                 }
                 break;
             case STATE_BULLET.ENEMY:
@@ -62,6 +81,8 @@ public class BulletComponent : MonoBehaviour
                     Instantiate(breakSprite, transform.localPosition, Quaternion.identity);
                     // 自身の破壊
                     Destroy(gameObject);
+
+                    
                 }
                 break;
         }

@@ -17,10 +17,12 @@ public class BombManager : MonoBehaviour
 
     private EnemyBase enemyBase;
 
+    AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
-       
+       audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -31,6 +33,7 @@ public class BombManager : MonoBehaviour
             if (itemCounter.GetisBombChargeMax())
             {
                 itemCounter.ResetBombChargeCounter();
+                audioSource.Play();
                 for(int i = 0; i < spawner.Length; i++)
                 {
                     spawner[i].SpawnBomb();
