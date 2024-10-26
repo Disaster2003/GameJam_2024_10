@@ -10,9 +10,16 @@ public class PhaseManager : MonoBehaviour
     [SerializeField, Header("フェーズ間隔")] int[] intervalPhase;
     private int indexPhase;
 
+    [SerializeField, Header("Spawner")] 
+    private GameObject[] spawner = new GameObject[12];
+
+    float Updateinterval;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("はい");
 
         if (instance == null)
         {
@@ -22,14 +29,16 @@ public class PhaseManager : MonoBehaviour
 
         // フェーズ番号の初期化
         indexPhase = 0;
+
+        Updateinterval = 2f;
     }
 
     // Update is called once per frame
     void Update()
     {
         // フェーズ進行
-        float timer = GetComponent<Timer>().GetSurvivalTimer();
-        if(timer > 1)
+        int timer = (int)GetComponent<Timer>().GetSurvivalTimer();
+        if(Updateinterval < 0)
         {
             if (timer > 120)
             {
@@ -39,6 +48,10 @@ public class PhaseManager : MonoBehaviour
             {
                 UpdatePhase(timer, 0);
             }
+        }
+        else
+        {
+            Updateinterval -= Time.deltaTime;
         }
        
     }
@@ -58,15 +71,19 @@ public class PhaseManager : MonoBehaviour
     /// </summary>
     /// <param name="_timer">タイマー</param>
     /// <param name="index">指定する秒数配列のインデックス</param>
-    private void UpdatePhase(float _timer, int index)
+    private void UpdatePhase(int _timer, int index)
     {
-        if (_timer % intervalPhase[index] < 0.01f)
+        
+        if (_timer % intervalPhase[index] == 0)
         {
+            Debug.Log(_timer);
             // フェーズの更新
             indexPhase++;
             EnemyDelete();
             SpawnerChange();
             BulletDelete();
+
+            Updateinterval = 2f;
 
             Debug.Log("更新したよ");
         }
@@ -119,38 +136,18 @@ public class PhaseManager : MonoBehaviour
     /// </summary>
     private void SpawnerChange()
     {
-        // ゲームオブジェクトの配列を取得
-        GameObject[] allObjects = FindObjectsByType<GameObject>(FindObjectsSortMode.None);
-
-        // 配列内の各ゲームオブジェクトをループで処理
-        foreach (GameObject obj in allObjects)
+        for(int i = 0; i < spawner.Length; i++)
         {
-            //Debug.Log(indexPhase);
-            // オブジェクトの名前が "Spawner" + indexPhase を含んでいるかチェック
-            //if (obj.name.Contains("Spawner" + indexPhase))
-            //{
-            //    obj.SetActive(true);
-            //}
-            //else if (obj.name.Contains("Spawner"))
-            //{
-            //    obj.SetActive(false);
-            //}
-
-            Debug.Log(indexPhase.ToString());
-
-            if(obj.name.Contains("Spawner"))
+            if(i == indexPhase)
             {
-                if(obj.name.Contains(indexPhase.ToString()))
-                {
-                    //Debug.Log("通ったよ");
-                    obj.SetActive(true);
-                }
-                else
-                {
-                    obj.SetActive(false);
-                }
+                spawner[i].SetActive(true);
             }
-
+            else
+            {
+                spawner[i].SetActive(false);
+            }
         }
+
+        
     }
 }

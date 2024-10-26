@@ -129,7 +129,11 @@ public class EnemyBase : MonoBehaviour
             ItemDrop();
         }
 
-        boxCollider.enabled = false;
+        if(boxCollider != null)
+        {
+            boxCollider.enabled = false;
+        }
+       
         if(enemyRapidFire != null)
         {
             enemyRapidFire.enabled = false;

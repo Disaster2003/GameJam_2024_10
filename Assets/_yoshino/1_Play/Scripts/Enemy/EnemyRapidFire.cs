@@ -51,11 +51,12 @@ public class EnemyRapidFire : MonoBehaviour
                 if(ammoRemain <= 0)
                 {
                     timerSpawn = intervalSpawnBullet;
+                    ammoRemain = ammo;
                 }
             }
             else
             {
-                timerRapid -= intervalSpawnBullet;
+                timerRapid -= Time.deltaTime;
             }
         }
         else

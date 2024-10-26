@@ -37,7 +37,13 @@ public class BulletComponent : MonoBehaviour
         // nullチェック
         if (collision == null) return;
 
-       
+        if(collision.CompareTag("Bullet"))
+        {
+            Destroy(gameObject);
+            //プレハブの生成
+            Instantiate(breakSprite, transform.localPosition, Quaternion.identity);
+        }
+
         switch (state_bullet)
         {
             case STATE_BULLET.PLAYER:

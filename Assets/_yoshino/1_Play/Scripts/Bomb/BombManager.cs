@@ -28,8 +28,8 @@ public class BombManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.B))
         {
-            //if (itemCounter.GetisBombChargeMax())
-            //{
+            if (itemCounter.GetisBombChargeMax())
+            {
                 itemCounter.ResetBombChargeCounter();
                 for(int i = 0; i < spawner.Length; i++)
                 {
@@ -37,7 +37,7 @@ public class BombManager : MonoBehaviour
                 }
                 EnemyDelete();
                 BulletDelete();
-           // }
+            }
 
 
         }

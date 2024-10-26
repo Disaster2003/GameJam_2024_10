@@ -38,6 +38,7 @@ public class EnemyMove : MonoBehaviour
         // “’…ó‘Ô‚Ì‰Šú‰»
         isArrived = false;
         enemyBase = GetComponent<EnemyBase>();
+        positionGoal.y = transform.localPosition.y; 
     }
 
     // Update is called once per frame

@@ -4946,7 +4946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state_bullet: 1
-  speedMove: 5
+  speedMove: 6
   breakSprite: {fileID: 4308677850673929545, guid: fa49650bdb454624999278eb0f44edc8, type: 3}
 --- !u!114 &-2639898851853776281
 MonoBehaviour:
@@ -5146,5 +5146,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.13, y: 2.13}
+  m_Size: {x: 2.3, y: 2.3}
   m_EdgeRadius: 0

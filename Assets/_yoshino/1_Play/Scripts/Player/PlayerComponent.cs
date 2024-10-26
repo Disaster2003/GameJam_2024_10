@@ -49,6 +49,8 @@ public class PlayerComponent : MonoBehaviour
 
     private float shotInterval;
 
+    [SerializeField, Header("音楽ファイル")]
+    private AudioClip ac;
 
     // Start is called before the first frame update
     void Start()
@@ -145,7 +147,7 @@ public class PlayerComponent : MonoBehaviour
             {
                 Instantiate(bullet, transform.position + Vector3.right, Quaternion.identity);
                 shotInterval = shotIntervalBace;
-                Debug.Log(shotInterval);
+                
             }
            
         }

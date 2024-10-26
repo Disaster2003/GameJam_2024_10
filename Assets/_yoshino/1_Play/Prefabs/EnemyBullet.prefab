@@ -4946,7 +4946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state_bullet: -1
-  speedMove: 5
+  speedMove: 6
   breakSprite: {fileID: 4308677850673929545, guid: 404bfdc87c998fc49ab6a2ca5667a854, type: 3}
 --- !u!114 &-2639898851853776281
 MonoBehaviour:
