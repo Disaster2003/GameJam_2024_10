@@ -78,7 +78,7 @@ public class SetRanking : MonoBehaviour
             
 
             // •ª‚Æ•b‚ğ"ZZmZZs"Œ`®‚Å•\¦
-            txtRank[idx - 1].text = $"{(int)rank[idx]}";
+            txtRank[idx - 1].text = rank[idx].ToString("f0");
 
             string keyString = "Rank" + idx;
             PlayerPrefs.SetFloat(keyString, rank[idx]);
