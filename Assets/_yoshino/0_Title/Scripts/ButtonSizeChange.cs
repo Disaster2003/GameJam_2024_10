@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class BottomSizeChange : MonoBehaviour,IPointerEnterHandler, IPointerExitHandler
+public class BottonSizeChange : MonoBehaviour,IPointerEnterHandler, IPointerExitHandler
 {
     public float scaleSpeed = 2.0f;          // 拡大・縮小の速度
     public float maxScale = 1.2f;       // 最大サイズ倍率
@@ -28,7 +28,7 @@ public class BottomSizeChange : MonoBehaviour,IPointerEnterHandler, IPointerExit
         if (isHovering) // マウスがUI上にある場合
         {
             // スケールを更新
-            rectTransform.localScale = Vector3.Lerp(rectTransform.localScale, new Vector3(targetScale, targetScale, 1), Time.deltaTime * scaleSpeed);
+            rectTransform.localScale = Vector3.Lerp(rectTransform.localScale, new Vector3(targetScale, targetScale, 1), Time.unscaledDeltaTime * scaleSpeed);
 
             // スケールのターゲットを切り替え
             if (Mathf.Abs(rectTransform.localScale.x - targetScale) < 0.01f) // スケールが目標に近づいたら

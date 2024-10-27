@@ -51,6 +51,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        FadeInOrOut(Time.unscaledDeltaTime);
+
         switch (state_scene)
         {
             case STATE_SCENE.TITLE:
@@ -64,11 +66,6 @@ public class GameManager : MonoBehaviour
             case STATE_SCENE.OVER:
                 break;
         }
-    }
-
-    private void FixedUpdate()
-    {
-        FadeInOrOut(Time.fixedDeltaTime);
     }
 
     /// <summary>
@@ -105,7 +102,6 @@ public class GameManager : MonoBehaviour
         state_scene = _state_scene;
         imgFade.enabled = true;
         isFadeOut = true;
-        //Time.timeScale = 0;
     }
 
     /// <summary>
@@ -117,8 +113,8 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// フェードイン/アウト
     /// </summary>
-    /// <param name="_fixedDeltaTime">更新時間</param>
-    private void FadeInOrOut(float _fixedDeltaTime)
+    /// <param name="_unscaleDeltaTime">更新時間</param>
+    private void FadeInOrOut(float _unscaleDeltaTime)
     {
         if (isFadeOut)
         {
@@ -129,7 +125,7 @@ public class GameManager : MonoBehaviour
                 SceneManager.LoadSceneAsync((int)state_scene);
             }
             // フェードアウト
-            imgFade.color = Color.Lerp(imgFade.color, Color.black, fadeTime * _fixedDeltaTime);
+            imgFade.color = Vector4.MoveTowards(imgFade.color, Color.black, fadeTime * _unscaleDeltaTime);
         }
         else if(imgFade.color != Color.clear)
         {
@@ -141,7 +137,7 @@ public class GameManager : MonoBehaviour
                 return;
             }
             // フェードイン
-            imgFade.color = Color.Lerp(imgFade.color, Color.clear, fadeTime * _fixedDeltaTime);
+            imgFade.color = Vector4.MoveTowards(imgFade.color, Color.clear, fadeTime * _unscaleDeltaTime);
         }
     }
 
@@ -171,6 +167,4 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1;
         }
     }
-
-
 }
