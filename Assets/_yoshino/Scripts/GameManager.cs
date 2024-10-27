@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour
 
         imgFade.color = Color.black; // フェードアウト状態
         isFadeOut = false;           // フェードインに
+
+        Time.timeScale = 0;
     }
 
     // Update is called once per frame
@@ -102,6 +104,7 @@ public class GameManager : MonoBehaviour
         state_scene = _state_scene;
         imgFade.enabled = true;
         isFadeOut = true;
+        Time.timeScale = 0;
     }
 
     /// <summary>
