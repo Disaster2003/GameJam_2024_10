@@ -125,6 +125,7 @@ public class GameManager : MonoBehaviour
             {
                 // 次のシーンへ
                 isFadeOut = false;
+                isPausing = false;
                 SceneManager.LoadSceneAsync((int)state_scene);
             }
             // フェードアウト
