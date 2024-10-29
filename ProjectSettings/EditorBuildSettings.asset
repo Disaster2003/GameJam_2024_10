@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Play.unity
     guid: 1c1c079548c8c4949b222c7cb31a4510
   - enabled: 1
-    path: Assets/Scenes/GameClear.unity
+    path: Assets/Scenes/Result.unity
     guid: c61777d9e9eadc748a422bb14a149373
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
