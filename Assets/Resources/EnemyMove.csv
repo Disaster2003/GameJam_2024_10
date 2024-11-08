@@ -1,7 +1,7 @@
 列挙定数名,移動速度,目標地点のx,目標地点のy,上下幅,待機時間
-STRAIGHT,,,,,
+STRAIGHT,0,0,0,0,0
 LITTLE_MOVE,4,6,0,5,1
-WAVE_MOVE,,,,,
+WAVE_MOVE,0,0,0,0,0
 WAVE_STAY,4,6,0,-4.5,1
 WAVE_STAY2,2,6,0,3,1
 WAVE_STAY3,2,6,0,3.5,1

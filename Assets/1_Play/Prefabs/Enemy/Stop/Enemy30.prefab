@@ -574,10 +574,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state_enemy: 1
-  speedMove: 4
-  positionGoal: {x: 6, y: 0, z: 0}
-  widthVertical: 5
-  timeWait: 1
+  speedMove: 0
+  positionGoal: {x: 0, y: 0, z: 0}
+  widthVertical: 0
+  timeWait: 0
 --- !u!114 &6446588874589132790
 MonoBehaviour:
   m_ObjectHideFlags: 0

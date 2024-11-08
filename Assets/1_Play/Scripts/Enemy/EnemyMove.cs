@@ -40,6 +40,8 @@ public class EnemyMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        CSVInit();
+
         // “’…ó‘Ô‚Ì‰Šú‰»
         isArrived = false;
         enemyBase = GetComponent<EnemyBase>();
@@ -77,7 +79,10 @@ public class EnemyMove : MonoBehaviour
         int i;
         for (i = 1; i < csvData.Count; i++)
         {
-            if (Enum.TryParse(csvData[i][0], out state_enemy)) break;
+            if (Enum.TryParse(csvData[i][0], true, out STATE_ENEMY state))
+            {
+                if (state_enemy == state) break;
+            }
         }
 
         // CSV‚Ì‘ã“ü

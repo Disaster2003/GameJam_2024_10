@@ -572,8 +572,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0884fcd3309f6e4887174591d3b9cea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state_enemy: 4
-  speedMove: 5
-  positionGoal: {x: 5, y: 0, z: 0}
-  widthVertical: -3.5
-  timeWait: 1
+  state_enemy: 6
+  speedMove: 0
+  positionGoal: {x: 0, y: 0, z: 0}
+  widthVertical: 0
+  timeWait: 0
